@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b6nxd0oa1vxlh"]
+
+[ext_resource type="PackedScene" uid="uid://ckakx4ufti3e3" path="res://Scenes/boundary.tscn" id="1_ra5jo"]
+[ext_resource type="PackedScene" uid="uid://bi1p4kxybl83k" path="res://Scenes/player.tscn" id="2_ra5jo"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ra5jo"]
+size = Vector2(20, 30)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nnts3"]
+
+[node name="Arena" type="Node2D" unique_id=1134529763]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2005135567]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1554572448]
+
+[node name="Floor" parent="Node2D" unique_id=1259429276 instance=ExtResource("1_ra5jo")]
+position = Vector2(0, 220)
+scale = Vector2(9, 1)
+
+[node name="Ceiling" parent="Node2D" unique_id=203995360 instance=ExtResource("1_ra5jo")]
+position = Vector2(0, -324)
+rotation = -3.1415925
+scale = Vector2(9, 1)
+
+[node name="Wall L" parent="Node2D" unique_id=30574115 instance=ExtResource("1_ra5jo")]
+position = Vector2(-600, 0)
+rotation = 1.5707964
+scale = Vector2(5.2, 1)
+
+[node name="Wall R" parent="Node2D" unique_id=74822403 instance=ExtResource("1_ra5jo")]
+position = Vector2(600, 0)
+rotation = -1.5707964
+scale = Vector2(5.2, 1)
+
+[node name="CharacterBody2D" parent="." unique_id=422138606 instance=ExtResource("2_ra5jo")]
+position = Vector2(0, -30)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=404632272]
+position = Vector2(100, -50)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=234887836]
+texture = SubResource("PlaceholderTexture2D_ra5jo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1342878600]
+shape = SubResource("CapsuleShape2D_nnts3")
