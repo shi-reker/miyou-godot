@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://ckakx4ufti3e3"]
 
-[ext_resource type="Texture2D" uid="uid://dih227cmi54j8" path="res://icon.svg" id="1_to6om"]
+[ext_resource type="Texture2D" uid="uid://clf3mua68yumi" path="res://Assets/Rectangle 6223.png" id="1_k2avy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jdqfs"]
 
 [node name="StaticBody2D" type="StaticBody2D" unique_id=1259429276]
-scale = Vector2(2, 0.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=891122993]
-texture = ExtResource("1_to6om")
+texture = ExtResource("1_k2avy")
+region_enabled = true
+region_rect = Rect2(0, 0, 1000, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1551008643]
 shape = SubResource("WorldBoundaryShape2D_jdqfs")
