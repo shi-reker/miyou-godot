@@ -10,26 +10,51 @@ var skill_4
 var jump
 var dash
 var interact
-var speed:float = 500
-var jumpHeight:float = -20000
+var speed:float = 300
+var jumpTime:float = 0.3
+var jumpHeight:float = -540
+var airTime:float = 0
+var fallSpeed:float = 200
 var isGrounded:bool = false
+var isJumping:bool = false
 
 func _physics_process(delta: float) -> void:
 	GetGrounded()
 	GetInput()
+	
 	var xMove:float = moveDir * speed
 	var yMove:float = 0
+	
+	if isJumping:
+		airTime += delta
+		if airTime < jumpTime and isGrounded:
+			isGrounded = false
+		elif airTime > jumpTime and !isGrounded:
+			isJumping = false
+			airTime = 0
+			print_debug("fall")
+		else:
+			isJumping = true
+	
 	if !isGrounded:
-		jump = false
-		#print_debug("falling")
-		yMove += 198
+		if !isJumping:
+			fallSpeed += delta*300
+			jump = false
+			print_debug("falling")
+			yMove += fallSpeed
+		else:
+			yMove = jumpHeight
+			print_debug("jumping")
 	else:
 		if jump:
+			isJumping = true
 			yMove = jumpHeight
-			#print_debug("jumping")
+			print_debug("up")
 		else:
+			fallSpeed = 200
 			yMove = 0
-			#print_debug("grounded")
+			print_debug("grounded")
+	
 	moveChar(xMove, yMove)
 
 func GetGrounded():
@@ -38,10 +63,10 @@ func GetGrounded():
 		var colName = groundRay.get_collider().get_property_list()
 		if colClass == "StaticBody2D":
 			isGrounded = true
-			print_debug(colName[2])
+			#print_debug(colName[2])
 		else:
 			isGrounded = false
-			print_debug(colName[0])
+			#print_debug(colName[0])
 		#if colClass == "CollisionShape2D" and colName[name] == "Floor":
 			#isGrounded = true
 	else:
@@ -59,8 +84,8 @@ func GetInput():
 
 func moveChar(xMove:float, yMove:float):
 	velocity.y = yMove
-	if jump:
-		velocity.y = move_toward(position.y, velocity.y, speed)
+	#if isJumping:
+		#velocity.y = move_toward(position.y, velocity.y, speed)
 	
 	if xMove: #apply horizontal movement
 		velocity.x = xMove
