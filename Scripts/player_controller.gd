@@ -1,7 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
-@onready var groundRay:RayCast2D = $RayCast2D
+@onready var groundRay:RayCast2D = $"Ground Ray"
+@onready var aimRay:RayCast2D = $"Aiming Ray"
+
 var moveDir
 var skill_1
 var skill_2
@@ -10,14 +12,22 @@ var skill_4
 var jump
 var dash
 var interact
+
 var speed:float = 260
 var jumpTime:float = 0.1
 var jumpHeight:float = -56
 var airTime:float = 0
 var fallSpeed:float = 14
 var xMomentum:float = 0
+var dashDur:float = 0.05
+var dashTime:float = -1
+var dashVal:float = 800
+var dashCD:float = 2
 var isGrounded:bool = false
 var isJumping:bool = false
+#var cdTimers:Dictionary = {
+	#DASH = 0
+#}
 
 func _physics_process(delta: float) -> void:
 	GetGrounded()
@@ -33,7 +43,6 @@ func _physics_process(delta: float) -> void:
 		elif airTime > jumpTime and !isGrounded:
 			isJumping = false
 			airTime = 0
-			print_debug("fall")
 		else:
 			isJumping = true
 	
@@ -41,23 +50,24 @@ func _physics_process(delta: float) -> void:
 		xMove *= 0.4
 		if !isJumping:
 			jump = false
-			print_debug("falling")
 			yMove = fallSpeed
 		else:
 			yMove = jumpHeight
-			print_debug("jumping")
 	else:
 		if jump:
 			xMomentum = xMove
 			isJumping = true
 			yMove = jumpHeight
-			print_debug("up")
 		else:
 			xMomentum = 0
 			yMove = 0
-			print_debug("grounded")
 	
+	xMove = doDash(delta, xMove)
 	xMove += xMomentum
+	
+	#aimRay.look_at(get_global_mouse_position())
+	aimRay.target_position = get_global_mouse_position()
+	draw.emit()
 	moveChar(xMove, yMove)
 
 func GetGrounded():
@@ -70,8 +80,6 @@ func GetGrounded():
 		else:
 			isGrounded = false
 			#print_debug(colName[0])
-		#if colClass == "CollisionShape2D" and colName[name] == "Floor":
-			#isGrounded = true
 	else:
 		isGrounded = false
 
@@ -95,5 +103,31 @@ func moveChar(xMove:float, yMove:float):
 	
 	move_and_slide() #move
 
+func doDash(delta:float, xMove:float) -> float:
+	if dashTime < 0 and dashCD >= 2:
+		if dash:
+			dashTime = 0
+			dashCD = 0
+		else:
+			return xMove
+	
+	if dashTime >= 0 and dashTime <= dashDur:
+		dashTime += delta
+		#dashCD -= delta
+		if xMove < 0:
+			xMove -= dashVal
+		else:
+			xMove += dashVal
+	else:
+		dashTime = -1
+		if dashCD < 2:
+			dashCD += delta
+			print_debug(dashCD)
+	
+	return xMove
+
 func _on_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
+
+#func _draw() -> void:
+	#draw_line(position, get_global_mouse_position(), Color.RED)

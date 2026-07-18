@@ -23,7 +23,9 @@ shape = SubResource("CapsuleShape2D_lq7nq")
 scale = Vector2(1, 1.1)
 shape = SubResource("CapsuleShape2D_lq7nq")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=179617391]
+[node name="Ground Ray" type="RayCast2D" parent="." unique_id=179617391]
 target_position = Vector2(0, 30)
+
+[node name="Aiming Ray" type="RayCast2D" parent="." unique_id=337095537]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
