@@ -10,11 +10,12 @@ var skill_4
 var jump
 var dash
 var interact
-var speed:float = 300
-var jumpTime:float = 0.3
-var jumpHeight:float = -540
+var speed:float = 260
+var jumpTime:float = 0.1
+var jumpHeight:float = -56
 var airTime:float = 0
-var fallSpeed:float = 200
+var fallSpeed:float = 14
+var xMomentum:float = 0
 var isGrounded:bool = false
 var isJumping:bool = false
 
@@ -37,24 +38,26 @@ func _physics_process(delta: float) -> void:
 			isJumping = true
 	
 	if !isGrounded:
+		xMove *= 0.4
 		if !isJumping:
-			fallSpeed += delta*300
 			jump = false
 			print_debug("falling")
-			yMove += fallSpeed
+			yMove = fallSpeed
 		else:
 			yMove = jumpHeight
 			print_debug("jumping")
 	else:
 		if jump:
+			xMomentum = xMove
 			isJumping = true
 			yMove = jumpHeight
 			print_debug("up")
 		else:
-			fallSpeed = 200
+			xMomentum = 0
 			yMove = 0
 			print_debug("grounded")
 	
+	xMove += xMomentum
 	moveChar(xMove, yMove)
 
 func GetGrounded():
@@ -83,9 +86,7 @@ func GetInput():
 	interact = Input.is_action_pressed("Interact")
 
 func moveChar(xMove:float, yMove:float):
-	velocity.y = yMove
-	#if isJumping:
-		#velocity.y = move_toward(position.y, velocity.y, speed)
+	velocity.y += yMove
 	
 	if xMove: #apply horizontal movement
 		velocity.x = xMove
