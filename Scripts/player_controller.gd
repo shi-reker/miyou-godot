@@ -21,7 +21,7 @@ var fallSpeed:float = 14
 var xMomentum:float = 0
 var dashDur:float = 0.05
 var dashTime:float = -1
-var dashVal:float = 800
+var dashVal:float = 1000
 var dashCD:float = 2
 var isGrounded:bool = false
 var isJumping:bool = false
@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	
 	#aimRay.look_at(get_global_mouse_position())
 	aimRay.target_position = get_global_mouse_position()
-	draw.emit()
+	#draw.emit()
 	moveChar(xMove, yMove)
 
 func GetGrounded():
