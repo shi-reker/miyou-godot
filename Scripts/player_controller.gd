@@ -3,6 +3,7 @@ class_name Player
 
 @onready var groundRay:RayCast2D = $"Ground Ray"
 @onready var aimRay:RayCast2D = $"Aiming Ray"
+@onready var Weapon:Area2D = $Weapon
 
 var moveDir
 var skill_1
@@ -65,8 +66,8 @@ func _physics_process(delta: float) -> void:
 	xMove = doDash(delta, xMove)
 	xMove += xMomentum
 	
-	#aimRay.look_at(get_global_mouse_position())
-	aimRay.target_position = get_global_mouse_position()
+	#Weapon.position = get_global_mouse_position()
+	Weapon.look_at(get_global_mouse_position())
 	#draw.emit()
 	moveChar(xMove, yMove)
 
@@ -127,7 +128,11 @@ func doDash(delta:float, xMove:float) -> float:
 	return xMove
 
 func _on_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	if body is Ground:
+		isGrounded = true
+	else:
+		isGrounded = false
 
-#func _draw() -> void:
-	#draw_line(position, get_global_mouse_position(), Color.RED)
+func _on_body_exited(body: Node2D) -> void:
+	if body is Ground:
+		isGrounded = false
