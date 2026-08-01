@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Weapon_base" format=3 uid="uid://st0kxm7pp8ob"]
+
+[ext_resource type="Script" uid="uid://bd3w163kud3kg" path="res://Resources/Base/weapon_base_res.gd" id="1_weius"]
+
+[resource]
+script = ExtResource("1_weius")
+dmg = 4.0
+atkSpeed = 2.0
+crit = 2.0
+critMulti = 2.0
+type = 3
+sprite = "res://Assets/Sprites/Weapons/Firearm.png"
+metadata/_custom_type_script = "uid://bd3w163kud3kg"

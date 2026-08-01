@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Weapon_base" format=3 uid="uid://dbm0ybl03quom"]
+
+[ext_resource type="Script" uid="uid://bd3w163kud3kg" path="res://Resources/Base/weapon_base_res.gd" id="1_3kycq"]
+
+[resource]
+script = ExtResource("1_3kycq")
+dmg = 25.0
+atkSpeed = 1.2
+crit = 10.0
+critMulti = 1.3
+type = 5
+sprite = "res://Assets/Sprites/Weapons/Fist.png"
+metadata/_custom_type_script = "uid://bd3w163kud3kg"

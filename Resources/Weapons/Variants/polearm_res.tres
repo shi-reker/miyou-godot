@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Weapon_base" format=3 uid="uid://nnwlpwdfhfri"]
+
+[ext_resource type="Script" uid="uid://bd3w163kud3kg" path="res://Resources/Base/weapon_base_res.gd" id="1_cf1d8"]
+
+[resource]
+script = ExtResource("1_cf1d8")
+dmg = 35.0
+atkSpeed = 0.7
+crit = 5.0
+critMulti = 1.8
+type = 6
+sprite = "res://Assets/Sprites/Weapons/Spear.png"
+metadata/_custom_type_script = "uid://bd3w163kud3kg"

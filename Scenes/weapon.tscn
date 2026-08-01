@@ -1,14 +1,21 @@
 [gd_scene format=3 uid="uid://c6rhryxsboula"]
 
+[ext_resource type="Script" uid="uid://jq3x2ubel0he" path="res://Scenes/weapon_base.gd" id="1_er6cq"]
+[ext_resource type="Resource" uid="uid://cqgurvk6s2gk2" path="res://Resources/Variants/dex_res.tres" id="2_qv81b"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17xbw"]
+radius = 5.0
+height = 42.0
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_er6cq"]
-
-[node name="Node2D" type="Area2D" unique_id=702172791]
+[node name="Weapon" type="Area2D" unique_id=702172791 node_paths=PackedStringArray("sprite", "hitbox")]
+script = ExtResource("1_er6cq")
+weapon_stats = ExtResource("2_qv81b")
+sprite = NodePath("CollisionShape2D/Sprite2D")
+hitbox = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1126272923]
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_17xbw")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=478040073]
-scale = Vector2(20, 20)
-texture = SubResource("PlaceholderTexture2D_er6cq")
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=478040073]
+scale = Vector2(0.08, 0.08)

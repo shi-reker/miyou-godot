@@ -30,7 +30,7 @@ target_position = Vector2(0, 30)
 [node name="Aiming Ray" type="RayCast2D" parent="." unique_id=337095537]
 
 [node name="Weapon" parent="." unique_id=702172791 instance=ExtResource("3_6t5aa")]
-position = Vector2(0, -30)
+position = Vector2(10, 8)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

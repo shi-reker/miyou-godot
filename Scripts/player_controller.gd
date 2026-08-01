@@ -14,6 +14,7 @@ var jump
 var dash
 var interact
 
+var health:float = 100
 var speed:float = 260
 var jumpTime:float = 0.1
 var jumpHeight:float = -56
@@ -67,7 +68,6 @@ func _physics_process(delta: float) -> void:
 	xMove += xMomentum
 	
 	#Weapon.position = get_global_mouse_position()
-	Weapon.look_at(get_global_mouse_position())
 	#draw.emit()
 	moveChar(xMove, yMove)
 
@@ -126,6 +126,7 @@ func doDash(delta:float, xMove:float) -> float:
 			print_debug(dashCD)
 	
 	return xMove
+
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Ground:
