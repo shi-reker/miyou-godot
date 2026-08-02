@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Enemy_base" format=3 uid="uid://bmc8gvgalgnam"]
+
+[ext_resource type="Script" uid="uid://bvb76v4wn3avy" path="res://Resources/Enemies/Base/enemy_base_res.gd" id="1_bbvy1"]
+
+[resource]
+script = ExtResource("1_bbvy1")
+health = 70.0
+defense = 10.0
+speed = 70.0
+jumpTime = 0.1
+jumpHeight = -30.0
+fallSpeed = 14.0
+metadata/_custom_type_script = "uid://bvb76v4wn3avy"

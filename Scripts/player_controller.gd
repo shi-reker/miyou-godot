@@ -64,12 +64,10 @@ func _physics_process(delta: float) -> void:
 			xMomentum = 0
 			yMove = 0
 	
-	xMove = doDash(delta, xMove)
+	xMove = DoDash(delta, xMove)
 	xMove += xMomentum
 	
-	#Weapon.position = get_global_mouse_position()
-	#draw.emit()
-	moveChar(xMove, yMove)
+	MoveChar(xMove, yMove)
 
 func GetGrounded():
 	if groundRay.is_colliding():
@@ -94,7 +92,7 @@ func GetInput():
 	skill_4 = Input.is_action_pressed("Skill 4")
 	interact = Input.is_action_pressed("Interact")
 
-func moveChar(xMove:float, yMove:float):
+func MoveChar(xMove:float, yMove:float):
 	velocity.y += yMove
 	
 	if xMove: #apply horizontal movement
@@ -104,7 +102,7 @@ func moveChar(xMove:float, yMove:float):
 	
 	move_and_slide() #move
 
-func doDash(delta:float, xMove:float) -> float:
+func DoDash(delta:float, xMove:float) -> float:
 	if dashTime < 0 and dashCD >= 2:
 		if dash:
 			dashTime = 0
