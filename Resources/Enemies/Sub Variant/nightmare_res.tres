@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Devil_base" format=3 uid="uid://b3a13y24iuiu4"]
+
+[ext_resource type="Script" uid="uid://d3ra6qv3d5oh8" path="res://Resources/Enemies/Main Variant/devil_base_res.gd" id="1_n47b7"]
+
+[resource]
+script = ExtResource("1_n47b7")
+subType = 1
+health = 400.0
+defense = 100.0
+attack = 120.0
+mana = 600.0
+speed = 250.0
+jumpTime = 0.1
+jumpHeight = -70.0
+fallSpeed = 14.0
+metadata/_custom_type_script = "uid://d3ra6qv3d5oh8"

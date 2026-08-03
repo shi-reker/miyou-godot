@@ -16,6 +16,7 @@ var interact
 
 var health:float = 100
 var speed:float = 260
+var mana:float = 100
 var jumpTime:float = 0.1
 var jumpHeight:float = -56
 var airTime:float = 0

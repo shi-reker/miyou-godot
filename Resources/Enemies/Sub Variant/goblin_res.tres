@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Daemon_base" format=3 uid="uid://dlgo1tdgnt6ud"]
+
+[ext_resource type="Script" uid="uid://d3jxidlhdmvxb" path="res://Resources/Enemies/Main Variant/daemon_base_res.gd" id="1_jk11u"]
+
+[resource]
+script = ExtResource("1_jk11u")
+health = 30.0
+defense = 10.0
+attack = 8.0
+mana = 10.0
+speed = 160.0
+jumpTime = 0.1
+jumpHeight = -20.0
+fallSpeed = 14.0
+metadata/_custom_type_script = "uid://d3jxidlhdmvxb"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Demi_base" format=3 uid="uid://pfsis43e4dp8"]
+
+[ext_resource type="Script" uid="uid://dxhte6dnutajc" path="res://Resources/Enemies/Main Variant/demi_base_res.gd" id="1_xcwey"]
+
+[resource]
+script = ExtResource("1_xcwey")
+subType = 2
+health = 70.0
+defense = 80.0
+attack = 20.0
+mana = 20.0
+speed = 210.0
+jumpTime = 0.3
+jumpHeight = -60.0
+fallSpeed = 11.0
+metadata/_custom_type_script = "uid://dxhte6dnutajc"

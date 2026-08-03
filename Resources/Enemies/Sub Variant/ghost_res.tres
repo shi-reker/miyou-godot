@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Spirit_base" format=3 uid="uid://cydnfl6ps7y61"]
+
+[ext_resource type="Script" uid="uid://bq3asjco555jd" path="res://Resources/Enemies/Main Variant/spirit_base_res.gd" id="1_ggk6u"]
+
+[resource]
+script = ExtResource("1_ggk6u")
+health = 50.0
+attack = 20.0
+mana = 100.0
+speed = 120.0
+jumpHeight = -120.0
+metadata/_custom_type_script = "uid://bq3asjco555jd"

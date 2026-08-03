@@ -1,0 +1,26 @@
+extends Node
+
+enum Enemy_types {
+	UNDEAD,
+	DEMI,
+	DAEMON,
+	DEVIL,
+	SPIRIT,
+	MECHANICA,
+	HUMAN,
+	FOREIGN
+}
+
+enum Attributes {
+	DIVINE,
+	ORIGIN,
+	SOUL,
+	CHAOTIC,
+	MAGICAL,
+	PHYSICAL,
+	EVIL,
+	NEUTRAL,
+	GOOD,
+	MAD,
+	ETERNAL
+}

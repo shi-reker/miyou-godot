@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Demi_base" format=3 uid="uid://cdpguxt1kxx7p"]
+
+[ext_resource type="Script" uid="uid://dxhte6dnutajc" path="res://Resources/Enemies/Main Variant/demi_base_res.gd" id="1_gpy13"]
+
+[resource]
+script = ExtResource("1_gpy13")
+health = 140.0
+defense = 50.0
+attack = 30.0
+mana = 20.0
+speed = 200.0
+jumpTime = 0.1
+jumpHeight = -45.0
+fallSpeed = 14.0
+metadata/_custom_type_script = "uid://dxhte6dnutajc"

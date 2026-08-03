@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Human_base" format=3 uid="uid://c2wdjsnyyewod"]
+
+[ext_resource type="Script" uid="uid://drrbfxal72d4d" path="res://Resources/Enemies/Main Variant/human_base_res.gd" id="1_tqdlh"]
+
+[resource]
+script = ExtResource("1_tqdlh")
+subType = 1
+health = 120.0
+defense = 30.0
+attack = 20.0
+mana = 60.0
+speed = 120.0
+jumpTime = 0.1
+jumpHeight = -45.0
+fallSpeed = 14.0
+metadata/_custom_type_script = "uid://drrbfxal72d4d"
