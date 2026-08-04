@@ -11,8 +11,6 @@ class_name Enemy_base
 @export var fallSpeed:float
 
 var type:MainType
-var isGrounded:bool = false
-var isJumping:bool = false
 
 enum MainType {
 	UNDEAD,

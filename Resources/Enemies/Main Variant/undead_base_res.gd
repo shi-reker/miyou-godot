@@ -15,3 +15,13 @@ enum SubType {
 	DULLAHAN,
 	AMALGAM
 }
+
+var spritePaths:Dictionary[SubType, String] = {
+	SubType.ZOMBIE: "res://Assets/Sprites/Enemies/Undead/zombie.png",
+	SubType.JIANGSHI: "",
+	SubType.DECAYED: "",
+	SubType.SKELETON: "",
+	SubType.LICH: "",
+	SubType.DULLAHAN: "",
+	SubType.AMALGAM: ""
+}

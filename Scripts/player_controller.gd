@@ -4,6 +4,7 @@ class_name Player
 @onready var groundRay:RayCast2D = $"Ground Ray"
 @onready var aimRay:RayCast2D = $"Aiming Ray"
 @onready var Weapon:Area2D = $Weapon
+@onready var sprite:Sprite2D = $Sprite2D
 
 var moveDir
 var skill_1
@@ -72,9 +73,8 @@ func _physics_process(delta: float) -> void:
 
 func GetGrounded():
 	if groundRay.is_colliding():
-		var colClass = groundRay.get_collider().get_class()
-		var colName = groundRay.get_collider().get_property_list()
-		if colClass == "StaticBody2D":
+		var colClass = groundRay.get_collider()
+		if colClass is Ground:
 			isGrounded = true
 			#print_debug(colName[2])
 		else:
@@ -101,6 +101,7 @@ func MoveChar(xMove:float, yMove:float):
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
+	UpdateVisuals(xMove)
 	move_and_slide() #move
 
 func DoDash(delta:float, xMove:float) -> float:
@@ -126,13 +127,8 @@ func DoDash(delta:float, xMove:float) -> float:
 	
 	return xMove
 
-
-func _on_body_entered(body: Node2D) -> void:
-	if body is Ground:
-		isGrounded = true
-	else:
-		isGrounded = false
-
-func _on_body_exited(body: Node2D) -> void:
-	if body is Ground:
-		isGrounded = false
+func UpdateVisuals(xMove:float):
+	if xMove < 0:
+		sprite.flip_h = true
+	elif xMove > 0:
+		sprite.flip_h = false

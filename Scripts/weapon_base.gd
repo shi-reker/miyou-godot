@@ -21,7 +21,8 @@ func _ready() -> void:
 	print_debug(hitbox.shape.height)
 
 func _physics_process(delta: float) -> void:
-	if weapon_stats.type == weapon_stats.WeaponTypes.FIREARM:
-		position = get_global_mouse_position()
-	else:
-		look_at(get_global_mouse_position())
+	if weapon_stats.alignment == weapon_stats.Allegiance.FRIENDLY:
+		if weapon_stats.type == weapon_stats.WeaponTypes.FIREARM:
+			global_position = get_global_mouse_position()
+		else:
+			look_at(get_global_mouse_position())

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ckakx4ufti3e3" path="res://Scenes/boundary.tscn" id="1_ra5jo"]
 [ext_resource type="PackedScene" uid="uid://bi1p4kxybl83k" path="res://Scenes/player.tscn" id="2_ra5jo"]
+[ext_resource type="PackedScene" uid="uid://bmjgvb73cxahk" path="res://Scenes/enemy.tscn" id="3_nnts3"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ra5jo"]
 size = Vector2(20, 30)
@@ -37,6 +38,7 @@ scale = Vector2(0.65, 1)
 position = Vector2(0, -30)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=404632272]
+visible = false
 position = Vector2(100, -50)
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=234887836]
@@ -44,3 +46,6 @@ texture = SubResource("PlaceholderTexture2D_ra5jo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1342878600]
 shape = SubResource("CapsuleShape2D_nnts3")
+
+[node name="Enemy" parent="." unique_id=567249420 instance=ExtResource("3_nnts3")]
+position = Vector2(156, -6)
