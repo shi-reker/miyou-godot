@@ -3,7 +3,7 @@ class_name Player
 
 @onready var groundRay:RayCast2D = $"Ground Ray"
 @onready var aimRay:RayCast2D = $"Aiming Ray"
-@onready var Weapon:Area2D = $Weapon
+@onready var weapon:Weapon = $Weapon
 @onready var sprite:Sprite2D = $Sprite2D
 
 var moveDir
@@ -14,6 +14,7 @@ var skill_4
 var jump
 var dash
 var interact
+var attack
 
 var health:float = 100
 var speed:float = 260
@@ -27,11 +28,16 @@ var dashDur:float = 0.05
 var dashTime:float = -1
 var dashVal:float = 1000
 var dashCD:float = 2
+var atkTime:float = 0
 var isGrounded:bool = false
 var isJumping:bool = false
+#var isAttacking:bool = false
 #var cdTimers:Dictionary = {
 	#DASH = 0
 #}
+
+func _ready() -> void:
+	weapon.weapon_stats.alignment = weapon.weapon_stats.Allegiance.FRIENDLY
 
 func _physics_process(delta: float) -> void:
 	GetGrounded()
@@ -70,6 +76,15 @@ func _physics_process(delta: float) -> void:
 	xMove += xMomentum
 	
 	MoveChar(xMove, yMove)
+	
+	if attack and !weapon.isAttacking:
+		DoAttack()
+	elif weapon.isAttacking and atkTime < 0.1:
+		atkTime += delta
+		print_debug(atkTime)
+	elif weapon.isAttacking and atkTime >= 0.1:
+		weapon.isAttacking = false
+		atkTime = 0
 
 func GetGrounded():
 	if groundRay.is_colliding():
@@ -92,6 +107,7 @@ func GetInput():
 	skill_3 = Input.is_action_pressed("Skill 3")
 	skill_4 = Input.is_action_pressed("Skill 4")
 	interact = Input.is_action_pressed("Interact")
+	attack = Input.is_action_just_pressed("Attack")
 
 func MoveChar(xMove:float, yMove:float):
 	velocity.y += yMove
@@ -132,3 +148,16 @@ func UpdateVisuals(xMove:float):
 		sprite.flip_h = true
 	elif xMove > 0:
 		sprite.flip_h = false
+
+func DoAttack():
+	weapon.isAttacking = true
+	print_debug(weapon.isAttacking)
+
+func TakeDamage(damage:float):
+	health -= damage
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area is Weapon:
+		if area.isAttacking and area.weapon_stats.alignment == area.weapon_stats.Allegiance.HOSTILE:
+			var d = area.weapon_stats.dmg
+			TakeDamage(d)

@@ -69,7 +69,12 @@ func GetGrounded():
 		isGrounded = false
 
 func GetInput():
-	#moveDir = Input.get_axis("Backwards", "Forward")
+	moveDir = randf()
+	if moveDir < 0.5:
+		moveDir = 1
+		moveDir *= -1
+	else:
+		moveDir = 1
 	#jump = Input.is_action_pressed("Jump")
 	pass
 
@@ -89,3 +94,15 @@ func UpdateVisuals(xMove:float):
 		sprite.flip_h = true
 	elif xMove > 0:
 		sprite.flip_h = false
+
+func TakeDamage(damage:float):
+	enemyType.health -= damage
+	print_debug(enemyType.health)
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print_debug("entered")
+	if area is Weapon:
+		print_debug("weapon")
+		if area.isAttacking and area.weapon_stats.alignment == area.weapon_stats.Allegiance.FRIENDLY:
+			var d = area.weapon_stats.dmg
+			TakeDamage(d)

@@ -4,6 +4,7 @@ class_name Weapon
 @export var weapon_stats:Weapon_base
 @export var sprite:Sprite2D
 @export var hitbox:CollisionShape2D
+var isAttacking:bool = false
 
 func _ready() -> void:
 	sprite.texture = load(weapon_stats.sprite)
@@ -17,10 +18,11 @@ func _ready() -> void:
 	elif weapon_stats.type == weapon_stats.WeaponTypes.HEAVY:
 		hitbox.position.x = hitbox.shape.height/2
 	
-	print_debug(hitbox.shape.radius)
-	print_debug(hitbox.shape.height)
+	#print_debug(hitbox.shape.radius)
+	#print_debug(hitbox.shape.height)
 
 func _physics_process(delta: float) -> void:
+	
 	if weapon_stats.alignment == weapon_stats.Allegiance.FRIENDLY:
 		if weapon_stats.type == weapon_stats.WeaponTypes.FIREARM:
 			global_position = get_global_mouse_position()

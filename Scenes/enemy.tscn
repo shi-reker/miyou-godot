@@ -21,3 +21,10 @@ target_position = Vector2(0, 30)
 [node name="Weapon" parent="." unique_id=702172791 instance=ExtResource("2_afpow")]
 position = Vector2(10, 8)
 weapon_stats = ExtResource("3_afpow")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=243134772]
+
+[node name="Enemy Area" type="CollisionShape2D" parent="Area2D" unique_id=711918752]
+shape = SubResource("CapsuleShape2D_ne65n")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
