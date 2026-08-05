@@ -4,7 +4,9 @@ class_name Weapon
 @export var weapon_stats:Weapon_base
 @export var sprite:Sprite2D
 @export var hitbox:CollisionShape2D
+
 var isAttacking:bool = false
+var atkTime:float = 0
 
 func _ready() -> void:
 	sprite.texture = load(weapon_stats.sprite)
@@ -28,3 +30,11 @@ func _physics_process(delta: float) -> void:
 			global_position = get_global_mouse_position()
 		else:
 			look_at(get_global_mouse_position())
+
+func DoAttack(delta:float):
+	if isAttacking and atkTime < 0.1:
+		atkTime += delta
+		print_debug(atkTime)
+	elif isAttacking and atkTime >= 0.1:
+		isAttacking = false
+		atkTime = 0

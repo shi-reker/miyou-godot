@@ -78,13 +78,10 @@ func _physics_process(delta: float) -> void:
 	MoveChar(xMove, yMove)
 	
 	if attack and !weapon.isAttacking:
-		DoAttack()
-	elif weapon.isAttacking and atkTime < 0.1:
-		atkTime += delta
-		print_debug(atkTime)
-	elif weapon.isAttacking and atkTime >= 0.1:
-		weapon.isAttacking = false
-		atkTime = 0
+		weapon.isAttacking = true
+		weapon.DoAttack(delta)
+	elif weapon.isAttacking:
+		weapon.DoAttack(delta)
 
 func GetGrounded():
 	if groundRay.is_colliding():
@@ -102,11 +99,6 @@ func GetInput():
 	moveDir = Input.get_axis("Backwards", "Forward")
 	jump = Input.is_action_pressed("Jump")
 	dash = Input.is_action_pressed("Dash")
-	skill_1 = Input.is_action_pressed("Skill 1")
-	skill_2 = Input.is_action_pressed("Skill 2")
-	skill_3 = Input.is_action_pressed("Skill 3")
-	skill_4 = Input.is_action_pressed("Skill 4")
-	interact = Input.is_action_pressed("Interact")
 	attack = Input.is_action_just_pressed("Attack")
 
 func MoveChar(xMove:float, yMove:float):
@@ -149,12 +141,14 @@ func UpdateVisuals(xMove:float):
 	elif xMove > 0:
 		sprite.flip_h = false
 
-func DoAttack():
-	weapon.isAttacking = true
-	print_debug(weapon.isAttacking)
-
 func TakeDamage(damage:float):
 	health -= damage
+	
+	if health < 0:
+		Die()
+
+func Die():
+	queue_free()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Weapon:

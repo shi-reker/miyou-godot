@@ -98,6 +98,13 @@ func UpdateVisuals(xMove:float):
 func TakeDamage(damage:float):
 	enemyType.health -= damage
 	print_debug(enemyType.health)
+	
+	if enemyType.health < 0:
+		Die()
+
+func Die():
+	print_debug("ded")
+	queue_free()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	print_debug("entered")

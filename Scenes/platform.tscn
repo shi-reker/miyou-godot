@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dxtg7hplnvucp"]
+
+[ext_resource type="Texture2D" uid="uid://c02e47lb48jy0" path="res://Assets/Sprites/Environment/basic_tile_1.png" id="1_1rc8e"]
+[ext_resource type="Script" uid="uid://brywf7d7onrpp" path="res://Scripts/boundary.gd" id="1_n5262"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdow6"]
+
+[node name="platform" type="StaticBody2D" unique_id=365948666]
+script = ExtResource("1_n5262")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=347474884]
+shape = SubResource("RectangleShape2D_xdow6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1565904761]
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("1_1rc8e")

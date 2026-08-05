@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmjgvb73cxahk"]
 
-[ext_resource type="Script" uid="uid://cq0utlqsferna" path="res://Scenes/enemy_controller.gd" id="1_hghv2"]
+[ext_resource type="Script" uid="uid://cq0utlqsferna" path="res://Scripts/enemy_controller.gd" id="1_hghv2"]
 [ext_resource type="PackedScene" uid="uid://c6rhryxsboula" path="res://Scenes/weapon.tscn" id="2_afpow"]
 [ext_resource type="Resource" uid="uid://dhmj6dj7v51g4" path="res://Resources/Weapons/Variants/sword_res.tres" id="3_afpow"]
 

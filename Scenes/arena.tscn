@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6nxd0oa1vxlh"]
 
 [ext_resource type="PackedScene" uid="uid://ckakx4ufti3e3" path="res://Scenes/boundary.tscn" id="1_ra5jo"]
+[ext_resource type="PackedScene" uid="uid://dxtg7hplnvucp" path="res://Scenes/platform.tscn" id="2_1v1nj"]
 [ext_resource type="PackedScene" uid="uid://bi1p4kxybl83k" path="res://Scenes/player.tscn" id="2_ra5jo"]
 [ext_resource type="PackedScene" uid="uid://bmjgvb73cxahk" path="res://Scenes/enemy.tscn" id="3_nnts3"]
 
@@ -28,6 +29,16 @@ scale = Vector2(0.65, 1)
 position = Vector2(575, 0)
 rotation = -1.5707964
 scale = Vector2(0.65, 1)
+
+[node name="platforms" type="Node2D" parent="Node2D" unique_id=110727508]
+
+[node name="Node2D" parent="Node2D/platforms" unique_id=365948666 instance=ExtResource("2_1v1nj")]
+position = Vector2(-358, 148)
+scale = Vector2(10, 1)
+
+[node name="platform" parent="Node2D/platforms" unique_id=60071803 instance=ExtResource("2_1v1nj")]
+position = Vector2(-443, 83)
+scale = Vector2(8, 1)
 
 [node name="Player" parent="." unique_id=422138606 instance=ExtResource("2_ra5jo")]
 position = Vector2(0, -30)

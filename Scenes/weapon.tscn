@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6rhryxsboula"]
 
-[ext_resource type="Script" uid="uid://jq3x2ubel0he" path="res://Scripts/weapon_base.gd" id="1_er6cq"]
+[ext_resource type="Script" uid="uid://jq3x2ubel0he" path="res://Scripts/weapon_behaviour.gd" id="1_er6cq"]
 [ext_resource type="Resource" uid="uid://cqgurvk6s2gk2" path="res://Resources/Weapons/Variants/dex_res.tres" id="2_qv81b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17xbw"]
