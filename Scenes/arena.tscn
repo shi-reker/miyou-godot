@@ -33,7 +33,8 @@ scale = Vector2(0.65, 1)
 [node name="platforms" type="Node2D" parent="Node2D" unique_id=110727508]
 
 [node name="Node2D" parent="Node2D/platforms" unique_id=365948666 instance=ExtResource("2_1v1nj")]
-position = Vector2(-358, 148)
+position = Vector2(-388.00003, 173.99997)
+rotation = 0.5235988
 scale = Vector2(10, 1)
 
 [node name="platform" parent="Node2D/platforms" unique_id=60071803 instance=ExtResource("2_1v1nj")]

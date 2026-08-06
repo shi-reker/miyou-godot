@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cq0utlqsferna" path="res://Scripts/enemy_controller.gd" id="1_hghv2"]
 [ext_resource type="PackedScene" uid="uid://c6rhryxsboula" path="res://Scenes/weapon.tscn" id="2_afpow"]
-[ext_resource type="Resource" uid="uid://dhmj6dj7v51g4" path="res://Resources/Weapons/Variants/sword_res.tres" id="3_afpow"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ne65n"]
 
@@ -16,11 +15,11 @@ shape = SubResource("CapsuleShape2D_ne65n")
 scale = Vector2(0.05, 0.05)
 
 [node name="Ground Ray" type="RayCast2D" parent="." unique_id=1021620585]
-target_position = Vector2(0, 30)
+position = Vector2(0, 15)
+target_position = Vector2(0, 5)
 
 [node name="Weapon" parent="." unique_id=702172791 instance=ExtResource("2_afpow")]
 position = Vector2(10, 8)
-weapon_stats = ExtResource("3_afpow")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=243134772]
 

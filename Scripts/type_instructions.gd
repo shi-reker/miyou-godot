@@ -1,16 +1,5 @@
 extends Node
 
-enum Enemy_types {
-	UNDEAD,
-	DEMI,
-	DAEMON,
-	DEVIL,
-	SPIRIT,
-	MECHANICA,
-	HUMAN,
-	FOREIGN
-}
-
 enum Attributes {
 	DIVINE,
 	ORIGIN,

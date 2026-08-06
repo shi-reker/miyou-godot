@@ -1,36 +1,36 @@
-extends CharacterBody2D
+extends Controller
 class_name Enemy
 
 @export var enemyType:Enemy_base
-@onready var groundRay:RayCast2D = $"Ground Ray"
-@onready var weapon:Weapon = $Weapon
-@onready var sprite:Sprite2D = $Sprite2D
-
-var moveDir:float
-var jump:bool
-var airTime:float = 0
-var xMomentum:float = 0
-
-var isGrounded:bool = false
-var isJumping:bool = false
 
 func _ready() -> void:
+	groundRay = $"Ground Ray"
+	weapon = $Weapon
+	sprite = $Sprite2D
+	
 	enemyType = load("res://Resources/Enemies/Sub Variant/zombie_res.tres")
-	weapon.weapon_stats.alignment = weapon.weapon_stats.Allegiance.HOSTILE
+	#weapon.weapon_stats.alignment = weapon.weapon_stats.Allegiance.HOSTILE
 	sprite.texture = load(enemyType.spritePaths[enemyType.subType])
+	
+	health = enemyType.health
+	defense = enemyType.defense
+	dmg = enemyType.attack
+	mana = enemyType.mana
+	speed = enemyType.speed
+	jumpHeight = enemyType.jumpHeight
 
 func _physics_process(delta: float) -> void:
 	GetGrounded()
 	GetInput()
 	
-	var xMove:float = moveDir * enemyType.speed
+	var xMove:float = moveDir * speed
 	var yMove:float = 0
 	
 	if isJumping:
 		airTime += delta
-		if airTime < enemyType.jumpTime and isGrounded:
+		if airTime < jumpTime and isGrounded:
 			isGrounded = false
-		elif airTime > enemyType.jumpTime and !isGrounded:
+		elif airTime > jumpTime and !isGrounded:
 			isJumping = false
 			airTime = 0
 		else:
@@ -40,14 +40,14 @@ func _physics_process(delta: float) -> void:
 		xMove *= 0.4
 		if !isJumping:
 			jump = false
-			yMove = enemyType.fallSpeed
+			yMove = fallSpeed
 		else:
-			yMove = enemyType.jumpHeight
+			yMove = jumpHeight
 	else:
 		if jump:
 			xMomentum = xMove
 			isJumping = true
-			yMove = enemyType.jumpHeight
+			yMove = jumpHeight
 		else:
 			xMomentum = 0
 			yMove = 0
@@ -55,18 +55,6 @@ func _physics_process(delta: float) -> void:
 	xMove += xMomentum
 	
 	MoveChar(xMove, yMove)
-
-func GetGrounded():
-	if groundRay.is_colliding():
-		var colClass = groundRay.get_collider()
-		if colClass is Ground:
-			isGrounded = true
-			#print_debug(colName[2])
-		else:
-			isGrounded = false
-			#print_debug(colName[0])
-	else:
-		isGrounded = false
 
 func GetInput():
 	moveDir = randf()
@@ -78,38 +66,10 @@ func GetInput():
 	#jump = Input.is_action_pressed("Jump")
 	pass
 
-func MoveChar(xMove:float, yMove:float):
-	velocity.y += yMove
-	
-	if xMove: #apply horizontal movement
-		velocity.x = xMove
-	else:
-		velocity.x = move_toward(velocity.x, 0, enemyType.speed)
-	
-	UpdateVisuals(xMove)
-	move_and_slide() #move
-
-func UpdateVisuals(xMove:float):
-	if xMove < 0:
-		sprite.flip_h = true
-	elif xMove > 0:
-		sprite.flip_h = false
-
-func TakeDamage(damage:float):
-	enemyType.health -= damage
-	print_debug(enemyType.health)
-	
-	if enemyType.health < 0:
-		Die()
-
-func Die():
-	print_debug("ded")
-	queue_free()
-
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print_debug("entered")
+	#print_debug("entered")
 	if area is Weapon:
-		print_debug("weapon")
+		#print_debug("weapon")
 		if area.isAttacking and area.weapon_stats.alignment == area.weapon_stats.Allegiance.FRIENDLY:
 			var d = area.weapon_stats.dmg
 			TakeDamage(d)

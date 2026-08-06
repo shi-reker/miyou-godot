@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://3kr1x4g8j4jn" path="res://Scripts/player_controller.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://ck5nfexd6p7oo" path="res://Assets/1784191428514.png" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://c6rhryxsboula" path="res://Scenes/weapon.tscn" id="3_6t5aa"]
-[ext_resource type="Resource" uid="uid://bwr1d7gg6skr6" path="res://Resources/Weapons/Variants/heavy_res.tres" id="4_vgqql"]
+[ext_resource type="Resource" uid="uid://nnwlpwdfhfri" path="res://Resources/Weapons/Variants/polearm_res.tres" id="4_vgqql"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lq7nq"]
 
@@ -26,7 +26,8 @@ scale = Vector2(1, 1.1)
 shape = SubResource("CapsuleShape2D_lq7nq")
 
 [node name="Ground Ray" type="RayCast2D" parent="." unique_id=179617391]
-target_position = Vector2(0, 30)
+position = Vector2(0, 15)
+target_position = Vector2(0, 5)
 
 [node name="Aiming Ray" type="RayCast2D" parent="." unique_id=337095537]
 

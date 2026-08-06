@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="Weapon_base" format=3 uid="uid://cqgurvk6s2gk2"]
 
-[ext_resource type="Script" uid="uid://bd3w163kud3kg" path="res://Resources/Base/weapon_base_res.gd" id="1_576dg"]
+[ext_resource type="Script" uid="uid://bd3w163kud3kg" path="res://Resources/Weapons/Base/weapon_base_res.gd" id="1_576dg"]
+[ext_resource type="Texture2D" uid="uid://d214p17jit7xj" path="res://Assets/Sprites/Weapons/Chakram.png" id="2_kjgxh"]
 
 [resource]
 script = ExtResource("1_576dg")
@@ -9,5 +10,5 @@ atkSpeed = 1.8
 crit = 3.0
 critMulti = 1.8
 type = 4
-sprite = "res://Assets/Sprites/Weapons/Chakram.png"
+sprite = ExtResource("2_kjgxh")
 metadata/_custom_type_script = "uid://bd3w163kud3kg"

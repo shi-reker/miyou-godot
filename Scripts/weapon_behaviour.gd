@@ -9,16 +9,19 @@ var isAttacking:bool = false
 var atkTime:float = 0
 
 func _ready() -> void:
-	sprite.texture = load(weapon_stats.sprite)
+	sprite.texture = weapon_stats.sprite
 	hitbox.shape.radius = weapon_stats.collAndSpriteSizes[weapon_stats.type][0]
 	hitbox.shape.height = weapon_stats.collAndSpriteSizes[weapon_stats.type][1]
-	
-	if weapon_stats.type == weapon_stats.WeaponTypes.SWORD:
-		hitbox.position.x = hitbox.shape.height/2
-	elif weapon_stats.type == weapon_stats.WeaponTypes.DAGGER:
-		hitbox.position.x = hitbox.shape.height/2
-	elif weapon_stats.type == weapon_stats.WeaponTypes.HEAVY:
-		hitbox.position.x = hitbox.shape.height/2
+
+	match weapon_stats.type:
+		weapon_stats.WeaponTypes.SWORD:
+			hitbox.position.x = hitbox.shape.height/2
+		weapon_stats.WeaponTypes.DAGGER:
+			hitbox.position.x = hitbox.shape.height/2
+		weapon_stats.WeaponTypes.HEAVY:
+			hitbox.position.x = hitbox.shape.height/2
+		_:
+			pass
 	
 	#print_debug(hitbox.shape.radius)
 	#print_debug(hitbox.shape.height)

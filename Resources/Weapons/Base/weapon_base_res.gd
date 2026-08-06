@@ -9,7 +9,7 @@ class_name Weapon_base
 @export var alignment:Allegiance
 @export var attributes:Array
 @export var effects:Array
-@export var sprite:String
+@export var sprite:Texture2D
 #@export var objSize:
 
 enum WeaponTypes {
@@ -19,12 +19,14 @@ enum WeaponTypes {
 	FIREARM,
 	DEX,
 	UNARMED,
-	POLEARM
+	POLEARM,
+	NONE
 }
 
 enum Allegiance {
 	FRIENDLY,
-	HOSTILE
+	HOSTILE,
+	NONE
 }
 
 var collAndSpriteSizes:Dictionary[WeaponTypes, Array] = {
@@ -34,5 +36,6 @@ var collAndSpriteSizes:Dictionary[WeaponTypes, Array] = {
 	WeaponTypes.FIREARM: [15, 15],
 	WeaponTypes.DEX: [15, 15],
 	WeaponTypes.UNARMED: [20, 25],
-	WeaponTypes.POLEARM: [10, 60]
+	WeaponTypes.POLEARM: [10, 60],
+	WeaponTypes.NONE: [0,0]
 }
