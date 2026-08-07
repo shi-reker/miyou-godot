@@ -9,6 +9,7 @@ dmg = 25.0
 atkSpeed = 1.2
 crit = 10.0
 critMulti = 1.3
+atkDur = 0.2
 type = 5
 sprite = ExtResource("2_dpguy")
 metadata/_custom_type_script = "uid://bd3w163kud3kg"

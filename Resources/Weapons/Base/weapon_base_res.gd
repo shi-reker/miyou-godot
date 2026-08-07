@@ -5,6 +5,7 @@ class_name Weapon_base
 @export var atkSpeed:float
 @export var crit:float
 @export var critMulti:float
+@export var atkDur:float
 @export var type:WeaponTypes
 @export var alignment:Allegiance
 @export var attributes:Array

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Weapon_base" format=3 uid="uid://dhmj6dj7v51g4"]
 
 [ext_resource type="Script" uid="uid://bd3w163kud3kg" path="res://Resources/Weapons/Base/weapon_base_res.gd" id="1_jhknc"]
-[ext_resource type="Texture2D" uid="uid://chn1qk7bymbrr" path="res://Assets/Sprites/Weapons/Blade.png" id="2_dwia2"]
+[ext_resource type="Texture2D" uid="uid://c537roj3im8rt" path="res://Assets/Sprites/Weapons/Sword.png" id="2_dwia2"]
 
 [resource]
 script = ExtResource("1_jhknc")
@@ -9,5 +9,6 @@ dmg = 35.0
 atkSpeed = 0.8
 crit = 6.5
 critMulti = 1.6
+atkDur = 0.4
 sprite = ExtResource("2_dwia2")
 metadata/_custom_type_script = "uid://bd3w163kud3kg"

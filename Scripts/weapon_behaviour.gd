@@ -6,38 +6,96 @@ class_name Weapon
 @export var hitbox:CollisionShape2D
 
 var isAttacking:bool = false
-var atkTime:float = 0
+var atkDur:float = 0
 
 func _ready() -> void:
+	if weapon_stats:
+		setup()
+	else:
+		weapon_stats = load("res://Resources/Weapons/Variants/no_weapon_res.tres")
+
+func setup():
 	sprite.texture = weapon_stats.sprite
 	hitbox.shape.radius = weapon_stats.collAndSpriteSizes[weapon_stats.type][0]
 	hitbox.shape.height = weapon_stats.collAndSpriteSizes[weapon_stats.type][1]
-
+	
 	match weapon_stats.type:
 		weapon_stats.WeaponTypes.SWORD:
-			hitbox.position.x = hitbox.shape.height/2
+			hitbox.position.x = hitbox.shape.height/2.5
+			hitbox.rotation_degrees = 45
 		weapon_stats.WeaponTypes.DAGGER:
-			hitbox.position.x = hitbox.shape.height/2
+			hitbox.position.x = hitbox.shape.height/3.5
+			hitbox.rotation_degrees = 45
 		weapon_stats.WeaponTypes.HEAVY:
-			hitbox.position.x = hitbox.shape.height/2
+			hitbox.position.x = hitbox.shape.height/3.5
+			hitbox.rotation_degrees = 45
+		weapon_stats.WeaponTypes.POLEARM:
+			hitbox.rotation_degrees = 90
 		_:
 			pass
-	
-	#print_debug(hitbox.shape.radius)
-	#print_debug(hitbox.shape.height)
 
 func _physics_process(delta: float) -> void:
-	
 	if weapon_stats.alignment == weapon_stats.Allegiance.FRIENDLY:
 		if weapon_stats.type == weapon_stats.WeaponTypes.FIREARM:
 			global_position = get_global_mouse_position()
-		else:
-			look_at(get_global_mouse_position())
+	
+	pass
 
-func DoAttack(delta:float):
-	if isAttacking and atkTime < 0.1:
-		atkTime += delta
-		print_debug(atkTime)
-	elif isAttacking and atkTime >= 0.1:
-		isAttacking = false
-		atkTime = 0
+func DoAttack():
+	if isAttacking:
+		return
+	print_debug("atk")
+	
+	match weapon_stats.type:
+		weapon_stats.WeaponTypes.SWORD:
+			Swing()
+		weapon_stats.WeaponTypes.DAGGER:
+			Swing()
+			Thrust()
+		weapon_stats.WeaponTypes.HEAVY:
+			Swing()
+		weapon_stats.WeaponTypes.FIREARM:
+			Shoot()
+		weapon_stats.WeaponTypes.DEX:
+			Swing()
+		weapon_stats.WeaponTypes.UNARMED:
+			Thrust()
+		weapon_stats.WeaponTypes.POLEARM:
+			Thrust()
+
+func Swing():
+	var oriRotation = rotation
+	var startRotation = oriRotation - PI/2   # 60° back
+	var endtRotation = oriRotation + PI/2.5  # 60° forward
+	
+	rotation = startRotation
+	isAttacking = true
+	
+	var tween = create_tween()
+	tween.tween_property(self, "rotation", endtRotation, 0.1)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "rotation", oriRotation, 0.18)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_callback(func(): isAttacking = false)
+
+func Thrust():
+	var oriPos = position
+	var startPos = Vector2(oriPos.x - hitbox.shape.height/4, oriPos.y)   # back
+	var endPos = Vector2(oriPos.x + hitbox.shape.height/1.5, oriPos.y)  # forward
+	
+	position = startPos
+	isAttacking = true
+	
+	var tween = create_tween()
+	tween.tween_property(self, "position", endPos, 0.08)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", oriPos, 0.18)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_callback(func(): isAttacking = false)
+
+func Shoot():
+	hitbox.disabled = false
+	isAttacking = true
+	hitbox.disabled = true
+	isAttacking = false
+	print_debug("shoot")

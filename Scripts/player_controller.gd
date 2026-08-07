@@ -25,6 +25,8 @@ func _ready() -> void:
 	weapon = $Weapon
 	sprite = $Sprite2D
 	
+	weapon.weapon_stats = load("res://Resources/Weapons/Variants/polearm_res.tres")
+	weapon.setup()
 	weapon.weapon_stats.alignment = weapon.weapon_stats.Allegiance.FRIENDLY
 	
 	health = 100
@@ -72,10 +74,7 @@ func _physics_process(delta: float) -> void:
 	MoveChar(xMove, yMove)
 	
 	if attack and !weapon.isAttacking:
-		weapon.isAttacking = true
-		weapon.DoAttack(delta)
-	elif weapon.isAttacking:
-		weapon.DoAttack(delta)
+		weapon.DoAttack()
 
 func GetInput():
 	moveDir = Input.get_axis("Backwards", "Forward")

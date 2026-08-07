@@ -9,6 +9,7 @@ dmg = 15.0
 atkSpeed = 1.8
 crit = 3.0
 critMulti = 1.8
+atkDur = 0.15
 type = 4
 sprite = ExtResource("2_kjgxh")
 metadata/_custom_type_script = "uid://bd3w163kud3kg"
