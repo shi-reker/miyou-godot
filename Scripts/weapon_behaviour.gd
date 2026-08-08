@@ -45,43 +45,56 @@ func DoAttack():
 	if isAttacking:
 		return
 	print_debug("atk")
+	var thrustStart
+	var thrustEnd
+	var coorScale = hitbox.shape.height
 	
 	match weapon_stats.type:
 		weapon_stats.WeaponTypes.SWORD:
+			thrustStart = Vector2(position.x - coorScale/4, position.y - coorScale/2)
+			thrustEnd = Vector2(position.x + coorScale/4, position.y + coorScale/6)
+			Thrust(thrustStart, thrustEnd)
 			Swing()
 		weapon_stats.WeaponTypes.DAGGER:
+			thrustStart = Vector2(position.x - coorScale/4, position.y - coorScale/3)
+			thrustEnd = Vector2(position.x + coorScale/4, position.y + coorScale/3)
+			Thrust(thrustStart, thrustEnd)
 			Swing()
-			Thrust()
 		weapon_stats.WeaponTypes.HEAVY:
+			thrustStart = Vector2(position.x - coorScale/4, position.y - coorScale/2)
+			thrustEnd = Vector2(position.x + coorScale/4, position.y + coorScale/6)
+			Thrust(thrustStart, thrustEnd)
 			Swing()
 		weapon_stats.WeaponTypes.FIREARM:
 			Shoot()
 		weapon_stats.WeaponTypes.DEX:
 			Swing()
 		weapon_stats.WeaponTypes.UNARMED:
-			Thrust()
+			thrustStart = Vector2(position.x - coorScale/4, position.y)
+			thrustEnd = Vector2(position.x + coorScale/3, position.y)
+			Thrust(thrustStart, thrustEnd)
 		weapon_stats.WeaponTypes.POLEARM:
-			Thrust()
+			thrustStart = Vector2(position.x - coorScale/4, position.y)
+			thrustEnd = Vector2(position.x + coorScale/1.5, position.y)
+			Thrust(thrustStart, thrustEnd)
 
 func Swing():
 	var oriRotation = rotation
-	var startRotation = oriRotation - PI/2   # 60° back
-	var endtRotation = oriRotation + PI/2.5  # 60° forward
+	var startRotation = oriRotation - PI/2   # back
+	var endtRotation = oriRotation + PI/3  # forward
 	
 	rotation = startRotation
 	isAttacking = true
 	
 	var tween = create_tween()
-	tween.tween_property(self, "rotation", endtRotation, 0.1)\
+	tween.tween_property(self, "rotation", endtRotation, 0.08)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "rotation", oriRotation, 0.18)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	tween.tween_callback(func(): isAttacking = false)
 
-func Thrust():
+func Thrust(startPos:Vector2, endPos:Vector2):
 	var oriPos = position
-	var startPos = Vector2(oriPos.x - hitbox.shape.height/4, oriPos.y)   # back
-	var endPos = Vector2(oriPos.x + hitbox.shape.height/1.5, oriPos.y)  # forward
 	
 	position = startPos
 	isAttacking = true
