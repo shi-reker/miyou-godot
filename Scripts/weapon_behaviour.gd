@@ -5,16 +5,18 @@ class_name Weapon
 @export var sprite:Sprite2D
 @export var hitbox:CollisionShape2D
 
+@onready var projectile = load("res://Scenes/projectile.tscn")
+
 var isAttacking:bool = false
 var atkDur:float = 0
 
 func _ready() -> void:
 	if weapon_stats:
-		setup()
+		Setup()
 	else:
 		weapon_stats = load("res://Resources/Weapons/Variants/no_weapon_res.tres")
 
-func setup():
+func Setup():
 	sprite.texture = weapon_stats.sprite
 	hitbox.shape.radius = weapon_stats.collAndSpriteSizes[weapon_stats.type][0]
 	hitbox.shape.height = weapon_stats.collAndSpriteSizes[weapon_stats.type][1]
@@ -37,7 +39,7 @@ func setup():
 func _physics_process(delta: float) -> void:
 	if weapon_stats.alignment == weapon_stats.Allegiance.FRIENDLY:
 		if weapon_stats.type == weapon_stats.WeaponTypes.FIREARM:
-			global_position = get_global_mouse_position()
+			hitbox.global_position = get_global_mouse_position()
 	
 	pass
 
@@ -107,8 +109,6 @@ func Thrust(startPos:Vector2, endPos:Vector2):
 	tween.tween_callback(func(): isAttacking = false)
 
 func Shoot():
-	hitbox.disabled = false
-	isAttacking = true
-	hitbox.disabled = true
-	isAttacking = false
-	print_debug("shoot")
+	var bullet:Projectile = projectile.instantiate()
+	get_parent().get_parent().add_child(bullet)
+	bullet.Setup(weapon_stats.dmg, 1200, weapon_stats.alignment, [5, 30], weapon_stats.sprite, global_position, hitbox.global_position)
