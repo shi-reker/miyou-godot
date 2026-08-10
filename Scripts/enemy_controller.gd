@@ -73,3 +73,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if area.isAttacking and area.weapon_stats.alignment == area.weapon_stats.Allegiance.FRIENDLY:
 			var d = area.weapon_stats.dmg
 			TakeDamage(d)
+	elif area is Projectile:
+		if area.hostility == Weapon_base.Allegiance.FRIENDLY:
+			var d = area.damage
+			TakeDamage(d)

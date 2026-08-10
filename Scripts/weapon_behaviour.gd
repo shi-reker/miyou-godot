@@ -109,6 +109,7 @@ func Thrust(startPos:Vector2, endPos:Vector2):
 	tween.tween_callback(func(): isAttacking = false)
 
 func Shoot():
+	var t:Texture2D = load("res://Assets/Sprites/Weapons/projectiles/Bullet.png")
 	var bullet:Projectile = projectile.instantiate()
 	get_parent().get_parent().add_child(bullet)
-	bullet.Setup(weapon_stats.dmg, 1200, weapon_stats.alignment, [5, 30], weapon_stats.sprite, global_position, hitbox.global_position)
+	bullet.Setup(weapon_stats.dmg, 1200, weapon_stats.alignment, [5, 30], t, global_position, hitbox.global_position)
