@@ -14,7 +14,6 @@ var dashDur:float = 0.05
 var dashTime:float = -1
 var dashVal:float = 1000
 var dashCD:float = 2
-var atkTime:float = 0
 #var isAttacking:bool = false
 #var cdTimers:Dictionary = {
 	#DASH = 0

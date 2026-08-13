@@ -11,7 +11,6 @@ class_name Weapon_base
 @export var attributes:Array
 @export var effects:Array
 @export var sprite:Texture2D
-#@export var objSize:
 
 enum WeaponTypes {
 	SWORD,
