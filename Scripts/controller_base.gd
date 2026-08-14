@@ -2,8 +2,9 @@ extends CharacterBody2D
 class_name Controller
 
 var groundRay:RayCast2D
-var weapon:Weapon
 var sprite:Sprite2D
+var weapon:Weapon
+var charClass:Class_base
 
 var health:float
 var defense:float

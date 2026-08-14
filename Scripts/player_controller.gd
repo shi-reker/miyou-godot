@@ -24,14 +24,16 @@ func _ready() -> void:
 	weapon = $Weapon
 	sprite = $Sprite2D
 	
-	weapon.weapon_stats = load("res://Resources/Weapons/Variants/firearm_res.tres")
+	charClass = load("res://Resources/Classes/Variants/no_class_res.tres")
+	weapon.weapon_stats = load("res://Resources/Weapons/Variants/heavy_res.tres")
 	weapon.Setup()
 	weapon.weapon_stats.alignment = weapon.weapon_stats.Allegiance.FRIENDLY
+	weapon.dmg *= charClass.dmgMulti
 	
-	health = 100
-	defense = 20
-	speed = 260
-	mana = 100
+	health = 100 * charClass.healthMulti
+	defense = 20 * charClass.defMulti
+	speed = 260 * charClass.spdMulti
+	mana = 100 * charClass.manaMulti
 	jumpHeight = -56
 
 func _physics_process(delta: float) -> void:
@@ -73,7 +75,7 @@ func _physics_process(delta: float) -> void:
 	MoveChar(xMove, yMove)
 	
 	if attack and !weapon.isAttacking:
-		weapon.DoAttack()
+		weapon.DoAttack(charClass.dmgMulti)
 
 func GetInput():
 	moveDir = Input.get_axis("Backwards", "Forward")
@@ -107,5 +109,9 @@ func DoDash(delta:float, xMove:float) -> float:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Weapon:
 		if area.isAttacking and area.weapon_stats.alignment == area.weapon_stats.Allegiance.HOSTILE:
-			var d = area.weapon_stats.dmg
+			var d = area.dmg
+			TakeDamage(d)
+	elif area is Projectile:
+		if area.hostility == Weapon_base.Allegiance.HOSTILE:
+			var d = area.damage
 			TakeDamage(d)

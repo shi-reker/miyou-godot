@@ -9,17 +9,21 @@ class_name Weapon
 
 var isAttacking:bool = false
 var atkDur:float = 0
+var dmg:float
+var doneAttacking:bool = false
 
 func _ready() -> void:
 	if weapon_stats:
 		Setup()
 	else:
 		weapon_stats = load("res://Resources/Weapons/Variants/no_weapon_res.tres")
+		dmg = weapon_stats.dmg
 
 func Setup():
 	sprite.texture = weapon_stats.sprite
 	hitbox.shape.radius = weapon_stats.collAndSpriteSizes[weapon_stats.type][0]
 	hitbox.shape.height = weapon_stats.collAndSpriteSizes[weapon_stats.type][1]
+	dmg = weapon_stats.dmg
 	
 	match weapon_stats.type:
 		weapon_stats.WeaponTypes.SWORD:
@@ -41,15 +45,18 @@ func _physics_process(delta: float) -> void:
 		if weapon_stats.type == weapon_stats.WeaponTypes.FIREARM:
 			hitbox.global_position = get_global_mouse_position()
 	
-	pass
+	#if doneAttacking:
+		#dmg = weapon_stats.dmg
 
-func DoAttack():
+func DoAttack(multi:float):
 	if isAttacking:
 		return
 	print_debug("atk")
 	var thrustStart
 	var thrustEnd
 	var coorScale = hitbox.shape.height
+	
+	#dmg *= multi
 	
 	match weapon_stats.type:
 		weapon_stats.WeaponTypes.SWORD:
@@ -79,6 +86,7 @@ func DoAttack():
 			thrustStart = Vector2(position.x - coorScale/4, position.y)
 			thrustEnd = Vector2(position.x + coorScale/1.5, position.y)
 			Thrust(thrustStart, thrustEnd)
+	
 
 func Swing():
 	var oriRotation = rotation
@@ -94,6 +102,8 @@ func Swing():
 	tween.tween_property(self, "rotation", oriRotation, 0.18)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	tween.tween_callback(func(): isAttacking = false)
+	
+	#dmg = dmgCache
 
 func Thrust(startPos:Vector2, endPos:Vector2):
 	var oriPos = position
@@ -107,9 +117,12 @@ func Thrust(startPos:Vector2, endPos:Vector2):
 	tween.tween_property(self, "position", oriPos, 0.18)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	tween.tween_callback(func(): isAttacking = false)
+	
+	#dmg = dmgCache
 
 func Shoot():
 	var t:Texture2D = load("res://Assets/Sprites/Weapons/projectiles/Bullet.png")
 	var bullet:Projectile = projectile.instantiate()
 	get_parent().get_parent().add_child(bullet)
-	bullet.Setup(weapon_stats.dmg, 1200, weapon_stats.alignment, [5, 30], t, global_position, hitbox.global_position)
+	bullet.Setup(dmg, 1200, weapon_stats.alignment, [5, 30], t, global_position, hitbox.global_position)
+	#dmg = weapon_stats.dmg

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Class_base" format=3 uid="uid://cujjarmgnawts"]
+
+[ext_resource type="Script" uid="uid://dpugoy7w16fm3" path="res://Resources/Classes/Base/class_base_res.gd" id="1_o4h2d"]
+
+[resource]
+script = ExtResource("1_o4h2d")
+dmgMulti = 1.5
+healthMulti = 0.8
+defMulti = 0.7
+healMulti = 0.7
+spdMulti = 1.4
+manaMulti = 1.2
+type = 6
+metadata/_custom_type_script = "uid://dpugoy7w16fm3"
