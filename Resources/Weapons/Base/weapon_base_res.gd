@@ -39,3 +39,13 @@ var collAndSpriteSizes:Dictionary[WeaponTypes, Array] = {
 	WeaponTypes.POLEARM: [10, 60],
 	WeaponTypes.NONE: [0,0]
 }
+
+var transformations:Dictionary[WeaponTypes, Array] = {
+	WeaponTypes.SWORD: ["Longsword", "Estoc", "Straight Sword", "Flying Sword", "Blade", "Shuang gou", "Odachi"],
+	WeaponTypes.DAGGER: ["Bowie Knife", "Butterfly Swords", "Rope Dagger", "Stakes", "Throwing Knives", "Sai", "Blink Dagger"],
+	WeaponTypes.POLEARM: ["Halberd", "Spear", "Staff", "Guandao", "Cane", "Sanjiegun", "Naginata"],
+	WeaponTypes.UNARMED: ["Fist-Palm", "Fist-Leg", "Palm-Leg", "Fist", "Leg", "Finger", "Aura hand"],
+	WeaponTypes.FIREARM: ["Shotgun", "Rifle", "Dual Pistols", "Rail", "SMG", "Cards", "Bow"],
+	WeaponTypes.DEX: ["Rings", "Chakram", "Haladie", "Flying Knives", "Needles", "Wire", "Claws"],
+	WeaponTypes.HEAVY: ["Zweihander", "Glaive", "Dual Cleaver", "Greatsword", "Launcher", "Scythe", "Ring Blade"]
+}

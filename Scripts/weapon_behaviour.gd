@@ -1,7 +1,7 @@
 extends Area2D
 class_name Weapon
 
-@export var weapon_stats:Weapon_base
+@export var stats:Weapon_base
 @export var sprite:Sprite2D
 @export var hitbox:CollisionShape2D
 
@@ -13,42 +13,46 @@ var dmg:float
 var doneAttacking:bool = false
 
 func _ready() -> void:
-	if weapon_stats:
-		Setup()
+	if stats:
+		Setup(7)
 	else:
-		weapon_stats = load("res://Resources/Weapons/Variants/no_weapon_res.tres")
-		dmg = weapon_stats.dmg
+		stats = load("res://Resources/Weapons/Variants/no_weapon_res.tres")
+		dmg = stats.dmg
 
-func Setup():
-	sprite.texture = weapon_stats.sprite
-	hitbox.shape.radius = weapon_stats.collAndSpriteSizes[weapon_stats.type][0]
-	hitbox.shape.height = weapon_stats.collAndSpriteSizes[weapon_stats.type][1]
-	dmg = weapon_stats.dmg
+func Setup(formID:int):
+	if formID == 7:
+		sprite.texture = stats.sprite
+	else:
+		sprite.texture = load("res://Assets/Sprites/Weapons/"+stats.transformations[stats.type][formID]+".png")
+		
+	hitbox.shape.radius = stats.collAndSpriteSizes[stats.type][0]
+	hitbox.shape.height = stats.collAndSpriteSizes[stats.type][1]
+	dmg = stats.dmg
 	
-	match weapon_stats.type:
-		weapon_stats.WeaponTypes.SWORD:
+	match stats.type:
+		stats.WeaponTypes.SWORD:
 			hitbox.position.x = hitbox.shape.height/2.5
 			hitbox.rotation_degrees = 45
-		weapon_stats.WeaponTypes.DAGGER:
+		stats.WeaponTypes.DAGGER:
 			hitbox.position.x = hitbox.shape.height/3.5
 			hitbox.rotation_degrees = 45
-		weapon_stats.WeaponTypes.HEAVY:
+		stats.WeaponTypes.HEAVY:
 			hitbox.position.x = hitbox.shape.height/3.5
 			hitbox.rotation_degrees = 45
-		weapon_stats.WeaponTypes.POLEARM:
+		stats.WeaponTypes.POLEARM:
 			hitbox.rotation_degrees = 90
 		_:
 			pass
 
 func _physics_process(delta: float) -> void:
-	if weapon_stats.alignment == weapon_stats.Allegiance.FRIENDLY:
-		if weapon_stats.type == weapon_stats.WeaponTypes.FIREARM:
+	if stats.alignment == stats.Allegiance.FRIENDLY:
+		if stats.type == stats.WeaponTypes.FIREARM:
 			hitbox.global_position = get_global_mouse_position()
 	
 	#if doneAttacking:
-		#dmg = weapon_stats.dmg
+		#dmg = stats.dmg
 
-func DoAttack(multi:float):
+func DoAttack():
 	if isAttacking:
 		return
 	print_debug("atk")
@@ -58,31 +62,31 @@ func DoAttack(multi:float):
 	
 	#dmg *= multi
 	
-	match weapon_stats.type:
-		weapon_stats.WeaponTypes.SWORD:
+	match stats.type:
+		stats.WeaponTypes.SWORD:
 			thrustStart = Vector2(position.x - coorScale/4, position.y - coorScale/2)
 			thrustEnd = Vector2(position.x + coorScale/4, position.y + coorScale/6)
 			Thrust(thrustStart, thrustEnd)
 			Swing()
-		weapon_stats.WeaponTypes.DAGGER:
+		stats.WeaponTypes.DAGGER:
 			thrustStart = Vector2(position.x - coorScale/4, position.y - coorScale/3)
 			thrustEnd = Vector2(position.x + coorScale/4, position.y + coorScale/3)
 			Thrust(thrustStart, thrustEnd)
 			Swing()
-		weapon_stats.WeaponTypes.HEAVY:
+		stats.WeaponTypes.HEAVY:
 			thrustStart = Vector2(position.x - coorScale/4, position.y - coorScale/2)
 			thrustEnd = Vector2(position.x + coorScale/4, position.y + coorScale/6)
 			Thrust(thrustStart, thrustEnd)
 			Swing()
-		weapon_stats.WeaponTypes.FIREARM:
+		stats.WeaponTypes.FIREARM:
 			Shoot()
-		weapon_stats.WeaponTypes.DEX:
+		stats.WeaponTypes.DEX:
 			Swing()
-		weapon_stats.WeaponTypes.UNARMED:
+		stats.WeaponTypes.UNARMED:
 			thrustStart = Vector2(position.x - coorScale/4, position.y)
 			thrustEnd = Vector2(position.x + coorScale/3, position.y)
 			Thrust(thrustStart, thrustEnd)
-		weapon_stats.WeaponTypes.POLEARM:
+		stats.WeaponTypes.POLEARM:
 			thrustStart = Vector2(position.x - coorScale/4, position.y)
 			thrustEnd = Vector2(position.x + coorScale/1.5, position.y)
 			Thrust(thrustStart, thrustEnd)
@@ -124,5 +128,5 @@ func Shoot():
 	var t:Texture2D = load("res://Assets/Sprites/Weapons/projectiles/Bullet.png")
 	var bullet:Projectile = projectile.instantiate()
 	get_parent().get_parent().add_child(bullet)
-	bullet.Setup(dmg, 1200, weapon_stats.alignment, [5, 30], t, global_position, hitbox.global_position)
-	#dmg = weapon_stats.dmg
+	bullet.Setup(dmg, 1200, stats.alignment, [5, 30], t, global_position, hitbox.global_position)
+	#dmg = stats.dmg

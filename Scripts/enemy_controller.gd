@@ -10,7 +10,7 @@ func _ready() -> void:
 	
 	enemyType = load("res://Resources/Enemies/Sub Variant/zombie_res.tres")
 	charClass = load("res://Resources/Classes/Variants/no_class_res.tres")
-	#weapon.weapon_stats.alignment = weapon.weapon_stats.Allegiance.HOSTILE
+	#weapon.stats.alignment = weapon.stats.Allegiance.HOSTILE
 	sprite.texture = load(enemyType.spritePaths[enemyType.subType])
 	
 	health = enemyType.health
@@ -71,7 +71,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	#print_debug("entered")
 	if area is Weapon:
 		#print_debug("weapon")
-		if area.isAttacking and area.weapon_stats.alignment == area.weapon_stats.Allegiance.FRIENDLY:
+		if area.isAttacking and area.stats.alignment == area.stats.Allegiance.FRIENDLY:
 			var d = area.dmg
 			TakeDamage(d)
 	elif area is Projectile:

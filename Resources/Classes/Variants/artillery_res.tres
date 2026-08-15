@@ -10,5 +10,5 @@ defMulti = 1.3
 healMulti = 0.6
 spdMulti = 0.7
 manaMulti = 1.4
-type = 4
+type = 3
 metadata/_custom_type_script = "uid://dpugoy7w16fm3"
