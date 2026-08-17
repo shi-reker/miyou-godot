@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Sword_base" format=3 uid="uid://qov8rdq7mq4t"]
+
+[ext_resource type="Script" uid="uid://bcq30wuiwxn8h" path="res://Resources/Weapons/Main Variants/sword_base_res.gd" id="1_rh4wf"]
+
+[resource]
+script = ExtResource("1_rh4wf")
+subType = 5
+metadata/_custom_type_script = "uid://bcq30wuiwxn8h"

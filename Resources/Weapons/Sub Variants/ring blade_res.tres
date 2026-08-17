@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Heavy_base" format=3 uid="uid://cyyfdowukrnuo"]
+
+[ext_resource type="Script" uid="uid://by0g8pc1reeyb" path="res://Resources/Weapons/Main Variants/heavy_base_res.gd" id="1_y2utd"]
+
+[resource]
+script = ExtResource("1_y2utd")
+subType = 6
+metadata/_custom_type_script = "uid://by0g8pc1reeyb"

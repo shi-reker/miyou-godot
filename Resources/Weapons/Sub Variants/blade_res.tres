@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sword_base" format=3 uid="uid://dbdqkaylo5nvh"]
+
+[ext_resource type="Script" uid="uid://bcq30wuiwxn8h" path="res://Resources/Weapons/Main Variants/sword_base_res.gd" id="1_d5357"]
+[ext_resource type="Texture2D" uid="uid://chn1qk7bymbrr" path="res://Assets/Sprites/Weapons/Blade.png" id="2_afg4e"]
+
+[resource]
+script = ExtResource("1_d5357")
+subType = 4
+sprite = ExtResource("2_afg4e")
+metadata/_custom_type_script = "uid://bcq30wuiwxn8h"

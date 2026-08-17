@@ -2,6 +2,7 @@ extends Controller
 class_name Player
 
 @onready var aimRay:RayCast2D = $"Aiming Ray"
+var wTypeRef:Weapon_base
 
 var skill_1
 var skill_2
@@ -24,10 +25,10 @@ func _ready() -> void:
 	weapon = $Weapon
 	sprite = $Sprite2D
 	
-	charClass = load("res://Resources/Classes/Variants/vanguard_res.tres")
-	print_debug(charClass.type)
-	weapon.stats = load("res://Resources/Weapons/Variants/heavy_res.tres")
-	weapon.Setup(charClass.type)
+	charClass = load("res://Resources/Classes/Variants/striker_res.tres")
+	#print_debug(charClass.type)
+	#weapon.stats = load("res://Resources/Weapons/Variants/sword_res.tres")
+	weapon.Setup(wTypeRef.WeaponTypes.FIREARM, charClass.type)
 	weapon.stats.alignment = weapon.stats.Allegiance.FRIENDLY
 	weapon.dmg *= charClass.dmgMulti
 	

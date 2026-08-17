@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sword_base" format=3 uid="uid://bhx2rbgarnexa"]
+
+[ext_resource type="Script" uid="uid://bcq30wuiwxn8h" path="res://Resources/Weapons/Main Variants/sword_base_res.gd" id="1_f1vn5"]
+[ext_resource type="Texture2D" uid="uid://bfx0oypxijvkn" path="res://Assets/Sprites/Weapons/Jian.png" id="2_b6tev"]
+
+[resource]
+script = ExtResource("1_f1vn5")
+subType = 2
+sprite = ExtResource("2_b6tev")
+metadata/_custom_type_script = "uid://bcq30wuiwxn8h"

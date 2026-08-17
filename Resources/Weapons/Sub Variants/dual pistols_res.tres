@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Firearm_base" format=3 uid="uid://bhrtomrta02k2"]
+
+[ext_resource type="Script" uid="uid://djfi2etxsg3lm" path="res://Resources/Weapons/Main Variants/firearm_base_res.gd" id="1_jan1f"]
+[ext_resource type="Texture2D" uid="uid://6146vcov4fil" path="res://Assets/Sprites/Weapons/Firearm.png" id="2_8xwr8"]
+
+[resource]
+script = ExtResource("1_jan1f")
+subType = 2
+sprite = ExtResource("2_8xwr8")
+metadata/_custom_type_script = "uid://djfi2etxsg3lm"

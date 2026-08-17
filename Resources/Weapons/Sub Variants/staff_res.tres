@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Polearm_base" format=3 uid="uid://5vyah5ls82cj"]
+
+[ext_resource type="Script" uid="uid://dt6de52yki8ju" path="res://Resources/Weapons/Main Variants/polearm_base_res.gd" id="1_ewtao"]
+
+[resource]
+script = ExtResource("1_ewtao")
+subType = 2
+metadata/_custom_type_script = "uid://dt6de52yki8ju"

@@ -57,14 +57,14 @@ func UpdateVisuals(xMove:float):
 		if weapon.position.x > 0:
 			weapon.position.x *= -1
 			#weapon.rotation *= -1
-			weapon.hitbox.rotation -= 1.5
+			#weapon.hitbox.rotation -= 1.5
 			#weapon.sprite.flip_h = true
 	elif xMove > 0:
 		sprite.flip_h = false
 		if weapon.position.x < 0:
 			weapon.position.x *= -1
 			#weapon.rotation *= -1
-			weapon.hitbox.rotation += 1.5
+			#weapon.hitbox.rotation += 1.5
 			#weapon.sprite.flip_h = false
 
 func TakeDamage(damage:float):

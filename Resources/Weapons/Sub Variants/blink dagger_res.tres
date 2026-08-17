@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Dagger_base" format=3 uid="uid://05xjtg0cpjk5"]
+
+[ext_resource type="Script" uid="uid://c5sp4e7ue1csd" path="res://Resources/Weapons/Main Variants/dagger_base_res.gd" id="1_6k7x0"]
+[ext_resource type="Texture2D" uid="uid://byu5j7rosb35o" path="res://Assets/Sprites/Weapons/Dagger.png" id="2_crpxn"]
+
+[resource]
+script = ExtResource("1_6k7x0")
+subType = 6
+sprite = ExtResource("2_crpxn")
+metadata/_custom_type_script = "uid://c5sp4e7ue1csd"

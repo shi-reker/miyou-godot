@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Dex_base" format=3 uid="uid://c5m3mr0r7kctv"]
+
+[ext_resource type="Script" uid="uid://cjptflrlb7axe" path="res://Resources/Weapons/Main Variants/dex_base_res.gd" id="1_ekuym"]
+
+[resource]
+script = ExtResource("1_ekuym")
+metadata/_custom_type_script = "uid://cjptflrlb7axe"

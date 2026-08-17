@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dagger_base" format=3 uid="uid://c1vmu63a5wc2j"]
+
+[ext_resource type="Script" uid="uid://c5sp4e7ue1csd" path="res://Resources/Weapons/Main Variants/dagger_base_res.gd" id="1_bosrc"]
+
+[resource]
+script = ExtResource("1_bosrc")
+subType = 1
+metadata/_custom_type_script = "uid://c5sp4e7ue1csd"

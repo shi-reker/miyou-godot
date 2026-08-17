@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Dex_base" format=3 uid="uid://blaamwc5pk87"]
+
+[ext_resource type="Script" uid="uid://cjptflrlb7axe" path="res://Resources/Weapons/Main Variants/dex_base_res.gd" id="1_igyn7"]
+[ext_resource type="Texture2D" uid="uid://d214p17jit7xj" path="res://Assets/Sprites/Weapons/Chakram.png" id="2_ysxg2"]
+
+[resource]
+script = ExtResource("1_igyn7")
+subType = 1
+sprite = ExtResource("2_ysxg2")
+metadata/_custom_type_script = "uid://cjptflrlb7axe"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dex_base" format=3 uid="uid://cu8rqrx50h0y2"]
+
+[ext_resource type="Script" uid="uid://cjptflrlb7axe" path="res://Resources/Weapons/Main Variants/dex_base_res.gd" id="1_lslvf"]
+
+[resource]
+script = ExtResource("1_lslvf")
+subType = 3
+metadata/_custom_type_script = "uid://cjptflrlb7axe"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Heavy_base" format=3 uid="uid://c5sg4s782igky"]
+
+[ext_resource type="Script" uid="uid://by0g8pc1reeyb" path="res://Resources/Weapons/Main Variants/heavy_base_res.gd" id="1_mibpo"]
+[ext_resource type="Texture2D" uid="uid://n3rw8n4amu66" path="res://Assets/Sprites/Weapons/Launcher.png" id="2_s2bhu"]
+
+[resource]
+script = ExtResource("1_mibpo")
+subType = 4
+sprite = ExtResource("2_s2bhu")
+metadata/_custom_type_script = "uid://by0g8pc1reeyb"

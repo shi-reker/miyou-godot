@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Heavy_base" format=3 uid="uid://ib7byap0hysq"]
+
+[ext_resource type="Script" uid="uid://by0g8pc1reeyb" path="res://Resources/Weapons/Main Variants/heavy_base_res.gd" id="1_pa5ei"]
+[ext_resource type="Texture2D" uid="uid://ccgh7pribgbub" path="res://Assets/Sprites/Weapons/Cleaver.png" id="2_nxbu4"]
+
+[resource]
+script = ExtResource("1_pa5ei")
+subType = 2
+sprite = ExtResource("2_nxbu4")
+metadata/_custom_type_script = "uid://by0g8pc1reeyb"

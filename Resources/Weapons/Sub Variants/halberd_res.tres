@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Polearm_base" format=3 uid="uid://wchg6d5flfum"]
+
+[ext_resource type="Script" uid="uid://dt6de52yki8ju" path="res://Resources/Weapons/Main Variants/polearm_base_res.gd" id="1_o5uc6"]
+[ext_resource type="Texture2D" uid="uid://ndvd7jn7xuw" path="res://Assets/Sprites/Weapons/Halberd.png" id="2_x1hln"]
+
+[resource]
+script = ExtResource("1_o5uc6")
+sprite = ExtResource("2_x1hln")
+metadata/_custom_type_script = "uid://dt6de52yki8ju"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Polearm_base" format=3 uid="uid://drtjo5cni1hcb"]
+
+[ext_resource type="Script" uid="uid://dt6de52yki8ju" path="res://Resources/Weapons/Main Variants/polearm_base_res.gd" id="1_a6qe7"]
+[ext_resource type="Texture2D" uid="uid://env2nlkdjod7" path="res://Assets/Sprites/Weapons/Spear.png" id="2_1j2i6"]
+
+[resource]
+script = ExtResource("1_a6qe7")
+subType = 1
+sprite = ExtResource("2_1j2i6")
+metadata/_custom_type_script = "uid://dt6de52yki8ju"

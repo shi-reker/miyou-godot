@@ -11,22 +11,23 @@ var isAttacking:bool = false
 var atkDur:float = 0
 var dmg:float
 var doneAttacking:bool = false
+var attributes:Array
+var effects:Array
 
 func _ready() -> void:
 	if stats:
-		Setup(7)
+		Setup(7, 7)
 	else:
-		stats = load("res://Resources/Weapons/Variants/no_weapon_res.tres")
+		stats = load("res://Resources/Weapons/Sub Variants/no_weapon_res.tres")
 		dmg = stats.dmg
 
-func Setup(formID:int):
-	if formID == 7:
-		sprite.texture = stats.sprite
-	else:
-		sprite.texture = load("res://Assets/Sprites/Weapons/"+stats.transformations[stats.type][formID]+".png")
-		
-	hitbox.shape.radius = stats.collAndSpriteSizes[stats.type][0]
-	hitbox.shape.height = stats.collAndSpriteSizes[stats.type][1]
+func Setup(type:int, form:int):
+	if type < 7 and form < 8:
+		stats = load("res://Resources/Weapons/Sub Variants/"+stats.transformations[type][form]+"_res.tres")
+	
+	sprite.texture = stats.sprite
+	hitbox.shape.radius = stats.hitboxDims[0]
+	hitbox.shape.height = stats.hitboxDims[1]
 	dmg = stats.dmg
 	
 	match stats.type:

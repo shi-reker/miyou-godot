@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Unarmed_base" format=3 uid="uid://bu16bcgs8ur6"]
+
+[ext_resource type="Script" uid="uid://bnvao1d7w5hxo" path="res://Resources/Weapons/Main Variants/unarmed_base_res.gd" id="1_ade45"]
+
+[resource]
+script = ExtResource("1_ade45")
+subType = 4
+metadata/_custom_type_script = "uid://bnvao1d7w5hxo"
