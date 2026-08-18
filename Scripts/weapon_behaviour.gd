@@ -7,6 +7,12 @@ class_name Weapon
 
 @onready var projectile = load("res://Scenes/projectile.tscn")
 
+var pTextures:Array = [
+	"res://Assets/Sprites/Weapons/projectiles/Pellet.png", "res://Assets/Sprites/Weapons/projectiles/Bullet.png", 
+	"res://Assets/Sprites/Weapons/projectiles/Rail_Projectile.png", "res://Assets/Sprites/Weapons/projectiles/Card1.png",
+	"res://Assets/Sprites/Weapons/projectiles/Arrow.png", "res://Assets/Sprites/Weapons/projectiles/Needle.png"
+]
+
 var isAttacking:bool = false
 var atkDur:float = 0
 var dmg:float
@@ -126,7 +132,18 @@ func Thrust(startPos:Vector2, endPos:Vector2):
 	#dmg = dmgCache
 
 func Shoot():
-	var t:Texture2D = load("res://Assets/Sprites/Weapons/projectiles/Bullet.png")
+	var t:Texture2D
+	match stats.subType:
+		0:
+			t = load(pTextures[0])
+		1, 2, 4, 7:
+			t = load(pTextures[1])
+		3:
+			t = load(pTextures[2])
+		5:
+			t = load(pTextures[3])
+		6:
+			t = load(pTextures[4])
 	var bullet:Projectile = projectile.instantiate()
 	get_parent().get_parent().add_child(bullet)
 	bullet.Setup(dmg, 1200, stats.alignment, [5, 30], t, global_position, hitbox.global_position)

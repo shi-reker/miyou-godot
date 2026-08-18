@@ -25,7 +25,7 @@ func _ready() -> void:
 	weapon = $Weapon
 	sprite = $Sprite2D
 	
-	charClass = load("res://Resources/Classes/Variants/striker_res.tres")
+	charClass = load("res://Resources/Classes/Variants/no_class_res.tres")
 	#print_debug(charClass.type)
 	#weapon.stats = load("res://Resources/Weapons/Variants/sword_res.tres")
 	weapon.Setup(wTypeRef.WeaponTypes.FIREARM, charClass.type)
