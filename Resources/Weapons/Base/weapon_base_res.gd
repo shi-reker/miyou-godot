@@ -8,7 +8,6 @@ var dmg:float
 var atkSpeed:float
 var crit:float
 var critMulti:float
-var atkDur:float
 var type:WeaponTypes
 
 enum WeaponTypes {

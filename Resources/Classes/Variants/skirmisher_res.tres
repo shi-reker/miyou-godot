@@ -4,11 +4,11 @@
 
 [resource]
 script = ExtResource("1_dxvbp")
-dmgMulti = 0.9
-healthMulti = 1.0
+dmgMulti = 1.0
+healthMulti = 0.9
 defMulti = 0.8
-healMulti = 1.1
-spdMulti = 1.4
-manaMulti = 1.1
+healMulti = 0.8
+spdMulti = 1.3
+manaMulti = 1.5
 type = 2
 metadata/_custom_type_script = "uid://dpugoy7w16fm3"

@@ -14,9 +14,8 @@ var pTextures:Array = [
 ]
 
 var isAttacking:bool = false
-var atkDur:float = 0
+var atkSpeed:float
 var dmg:float
-var doneAttacking:bool = false
 var attributes:Array
 var effects:Array
 
@@ -26,6 +25,7 @@ func _ready() -> void:
 	else:
 		stats = load("res://Resources/Weapons/Sub Variants/no_weapon_res.tres")
 		dmg = stats.dmg
+		atkSpeed = 1/stats.atkSpeed
 
 func Setup(type:int, form:int):
 	if type < 7 and form < 8:
@@ -35,6 +35,7 @@ func Setup(type:int, form:int):
 	hitbox.shape.radius = stats.hitboxDims[0]
 	hitbox.shape.height = stats.hitboxDims[1]
 	dmg = stats.dmg
+	atkSpeed = 1/stats.atkSpeed
 	
 	match stats.type:
 		stats.WeaponTypes.SWORD:
@@ -55,9 +56,6 @@ func _physics_process(delta: float) -> void:
 	if stats.alignment == stats.Allegiance.FRIENDLY:
 		if stats.type == stats.WeaponTypes.FIREARM:
 			hitbox.global_position = get_global_mouse_position()
-	
-	#if doneAttacking:
-		#dmg = stats.dmg
 
 func DoAttack():
 	if isAttacking:

@@ -11,6 +11,7 @@ var skill_4
 var dash
 var interact
 
+var atkCD:float = 0
 var dashDur:float = 0.05
 var dashTime:float = -1
 var dashVal:float = 1000
@@ -25,7 +26,7 @@ func _ready() -> void:
 	weapon = $Weapon
 	sprite = $Sprite2D
 	
-	charClass = load("res://Resources/Classes/Variants/no_class_res.tres")
+	charClass = load("res://Resources/Classes/Variants/duelist_res.tres")
 	#print_debug(charClass.type)
 	#weapon.stats = load("res://Resources/Weapons/Variants/sword_res.tres")
 	weapon.Setup(wTypeRef.WeaponTypes.FIREARM, charClass.type)
@@ -76,14 +77,18 @@ func _physics_process(delta: float) -> void:
 	
 	MoveChar(xMove, yMove)
 	
+	atkCD += delta
 	if attack and !weapon.isAttacking:
-		weapon.DoAttack()
+		if atkCD >= weapon.atkSpeed:
+			atkCD = 0
+			weapon.DoAttack()
 
 func GetInput():
 	moveDir = Input.get_axis("Backwards", "Forward")
 	jump = Input.is_action_pressed("Jump")
 	dash = Input.is_action_pressed("Dash")
-	attack = Input.is_action_just_pressed("Attack")
+	attack = Input.is_action_pressed("Attack")
+	#print_debug(attack)
 
 func DoDash(delta:float, xMove:float) -> float:
 	if dashTime < 0 and dashCD >= 2:
