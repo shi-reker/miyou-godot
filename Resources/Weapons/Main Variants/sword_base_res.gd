@@ -1,16 +1,6 @@
 extends Weapon_base
 class_name Sword_base
 
-@export var subType:Transformations
-
-func _init() -> void:
-	dmg = 35.0
-	atkSpeed = statVariants[subType][0]
-	crit = statVariants[subType][1]
-	critMulti = statVariants[subType][2]
-	type = WeaponTypes.SWORD
-	hitboxDims = [10, 40]
-
 enum Transformations {
 	LONGSWORD,
 	ESTOC,
@@ -21,6 +11,11 @@ enum Transformations {
 	ODACHI
 }
 
+@export var subType:Transformations = Transformations.LONGSWORD:
+	set(value):
+		subType = value
+		_apply_stats()
+
 var statVariants:Dictionary[Transformations, Array] = {
 	Transformations.LONGSWORD: [1.4, 5.0, 1.5],
 	Transformations.ESTOC: [1.3, 7.0, 1.8],
@@ -30,3 +25,15 @@ var statVariants:Dictionary[Transformations, Array] = {
 	Transformations.SHUANG_GOU: [1.5, 5.0, 1.6],
 	Transformations.ODACHI: [1.25, 4.5, 2.0],
 }
+
+func _init() -> void:
+	dmg = 35.0
+	type = WeaponTypes.SWORD
+	hitboxDims = [10, 40]
+	_apply_stats()
+
+func _apply_stats() -> void:
+	var stats: Array = statVariants[subType]
+	atkSpeed = stats[0]
+	crit = stats[1]
+	critMulti = stats[2]
