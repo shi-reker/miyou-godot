@@ -6,8 +6,12 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lq7nq"]
 
-[node name="Player Character" type="CharacterBody2D" unique_id=422138606]
+[node name="Player Character" type="CharacterBody2D" unique_id=422138606 node_paths=PackedStringArray("aimRay", "groundRay", "sprite", "weapon")]
 script = ExtResource("1_cvnsp")
+aimRay = NodePath("Aiming Ray")
+groundRay = NodePath("Ground Ray")
+sprite = NodePath("Sprite2D")
+weapon = NodePath("Weapon")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=111730956]
 position = Vector2(0, -2)

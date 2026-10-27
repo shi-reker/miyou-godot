@@ -1,9 +1,9 @@
 extends CharacterBody2D
 class_name Controller
 
-var groundRay:RayCast2D
-var sprite:Sprite2D
-var weapon:Weapon
+@export var groundRay:RayCast2D
+@export var sprite:Sprite2D
+@export var weapon:Weapon
 var charClass:Class_base
 
 var health:float
@@ -54,18 +54,20 @@ func MoveChar(xMove:float, yMove:float):
 func UpdateVisuals(xMove:float):
 	if xMove < 0:
 		sprite.flip_h = true
-		if weapon.position.x > 0:
+		if weapon.position.x > 0 and weapon.isAttacking == false:
 			weapon.position.x *= -1
-			#weapon.rotation *= -1
-			#weapon.hitbox.rotation -= 1.5
-			#weapon.sprite.flip_h = true
+			weapon.hitbox.rotation *= -1
+			weapon.hitbox.position.x *= -1
+			weapon.sprite.flip_h = true
+			weapon.isFlipped = true
 	elif xMove > 0:
 		sprite.flip_h = false
-		if weapon.position.x < 0:
+		if weapon.position.x < 0 and weapon.isAttacking == false:
 			weapon.position.x *= -1
-			#weapon.rotation *= -1
-			#weapon.hitbox.rotation += 1.5
-			#weapon.sprite.flip_h = false
+			weapon.hitbox.rotation *= -1
+			weapon.hitbox.position.x *= -1
+			weapon.sprite.flip_h = false
+			weapon.isFlipped = false
 
 func TakeDamage(damage:float):
 	health -= damage

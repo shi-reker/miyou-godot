@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://dbuv0q85esqyc"]
+
+[ext_resource type="Texture2D" uid="uid://b6tybx36l8huc" path="res://Assets/buttons/example selection button idle.png" id="1_4wiqv"]
+[ext_resource type="Texture2D" uid="uid://0e6ej770l6l8" path="res://Assets/buttons/example selection button pressed.png" id="2_ii1n8"]
+[ext_resource type="Texture2D" uid="uid://bw13dq1ga5k5k" path="res://Assets/buttons/example selection button hover.png" id="3_ugrh6"]
+[ext_resource type="Texture2D" uid="uid://cq31m1sj7chv3" path="res://Assets/Icons/Weapons/Heavy.png" id="4_ii1n8"]
+[ext_resource type="Script" uid="uid://clp0wwttjrmv6" path="res://Scripts/selection_slot.gd" id="4_ugrh6"]
+[ext_resource type="Texture2D" uid="uid://d4cplyxuwkh82" path="res://Assets/buttons/example selection button outline.png" id="6_huibn"]
+
+[sub_resource type="Theme" id="Theme_4wiqv"]
+
+[sub_resource type="FontFile" id="FontFile_huibn"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/15/0/ascent = 0.0
+cache/0/15/0/descent = 0.0
+cache/0/15/0/underline_position = 0.0
+cache/0/15/0/underline_thickness = 0.0
+cache/0/15/0/scale = 1.0
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+cache/0/13/0/ascent = 0.0
+cache/0/13/0/descent = 0.0
+cache/0/13/0/underline_position = 0.0
+cache/0/13/0/underline_thickness = 0.0
+cache/0/13/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/11/0/ascent = 0.0
+cache/0/11/0/descent = 0.0
+cache/0/11/0/underline_position = 0.0
+cache/0/11/0/underline_thickness = 0.0
+cache/0/11/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_y8knx"]
+font = SubResource("FontFile_huibn")
+font_size = 14
+
+[node name="SelectionSlot" type="TextureButton" unique_id=1894475401 node_paths=PackedStringArray("icon", "title", "outline")]
+texture_normal = ExtResource("1_4wiqv")
+texture_pressed = ExtResource("2_ii1n8")
+texture_hover = ExtResource("3_ugrh6")
+script = ExtResource("4_ugrh6")
+icon = NodePath("VBoxContainer/Icon")
+title = NodePath("VBoxContainer/Title")
+outline = NodePath("TextureRect")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1285131926]
+custom_minimum_size = Vector2(110, 90)
+custom_maximum_size = Vector2(-1, 90)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer" unique_id=1424318223]
+custom_maximum_size = Vector2(110, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_4wiqv")
+texture = ExtResource("4_ii1n8")
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=6761954]
+layout_mode = 2
+size_flags_vertical = 10
+text = "heavy"
+label_settings = SubResource("LabelSettings_y8knx")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=693389896]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_huibn")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

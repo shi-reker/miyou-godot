@@ -13,6 +13,7 @@ var pTextures:Array = [
 	"res://Assets/Sprites/Weapons/projectiles/Arrow.png", "res://Assets/Sprites/Weapons/projectiles/Needle.png"
 ]
 
+var isFlipped:bool = false
 var isAttacking:bool = false
 var atkSpeed:float
 var dmg:float
@@ -102,6 +103,10 @@ func Swing():
 	var startRotation = oriRotation - PI/2   # back
 	var endtRotation = oriRotation + PI/3  # forward
 	
+	if isFlipped:
+		startRotation *= -1
+		endtRotation *= -1
+	
 	rotation = startRotation
 	isAttacking = true
 	
@@ -115,6 +120,9 @@ func Swing():
 	#dmg = dmgCache
 
 func Thrust(startPos:Vector2, endPos:Vector2):
+	if isFlipped:
+		endPos *= -1
+	
 	var oriPos = position
 	
 	position = startPos

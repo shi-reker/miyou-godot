@@ -28,7 +28,7 @@ func Setup(dmg:float, spd:float, host:int, dim:Array, pic:Texture2D, init:Vector
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 	
-	if global_position.distance_to(initPos) > 1500.0:  # despawn if too far
+	if global_position.distance_to(initPos) > 1200.0:  # despawn if too far
 		queue_free()
 
 func _on_body_entered(body: Node2D) -> void:

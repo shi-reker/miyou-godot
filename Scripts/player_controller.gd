@@ -1,8 +1,7 @@
 extends Controller
 class_name Player
 
-@onready var aimRay:RayCast2D = $"Aiming Ray"
-var wTypeRef:Weapon_base
+@export var aimRay:RayCast2D
 
 var skill_1
 var skill_2
@@ -11,6 +10,7 @@ var skill_4
 var dash
 var interact
 
+var currentWeapon:Weapon_base.WeaponTypes
 var atkCD:float = 0
 var dashDur:float = 0.05
 var dashTime:float = -1
@@ -22,16 +22,14 @@ var dashCD:float = 2
 #}
 
 func _ready() -> void:
-	groundRay = $"Ground Ray"
-	weapon = $Weapon
-	sprite = $Sprite2D
-	
-	charClass = load("res://Resources/Classes/Variants/ranger_res.tres")
-	#print_debug(charClass.type)
-	#weapon.stats = load("res://Resources/Weapons/Variants/sword_res.tres")
-	weapon.Setup(wTypeRef.WeaponTypes.FIREARM, charClass.type)
+	Setup("res://Resources/Classes/Variants/no_class_res.tres", Weapon_base.WeaponTypes.HEAVY)
+
+func Setup(classPath:String, wType:Weapon_base.WeaponTypes = currentWeapon):
+	charClass = load(classPath)
+	weapon.Setup(wType, charClass.type)
 	weapon.stats.alignment = weapon.stats.Allegiance.FRIENDLY
 	weapon.dmg *= charClass.dmgMulti
+	currentWeapon = wType
 	
 	health = 100 * charClass.healthMulti
 	defense = 20 * charClass.defMulti

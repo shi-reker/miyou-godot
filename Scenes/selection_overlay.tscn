@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://b4duv2gn2act5"]
+
+[ext_resource type="Texture2D" uid="uid://dovhqlun2l3x8" path="res://Assets/selection bg.png" id="1_rnr46"]
+[ext_resource type="Script" uid="uid://trbeo86lo2dh" path="res://Scripts/selection_items_generator.gd" id="2_oteov"]
+
+[sub_resource type="SystemFont" id="SystemFont_tcxl7"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_xhb0o"]
+font = SubResource("SystemFont_tcxl7")
+font_size = 20
+
+[sub_resource type="SystemFont" id="SystemFont_7v1nb"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_x00a6"]
+font = SubResource("SystemFont_7v1nb")
+
+[sub_resource type="SystemFont" id="SystemFont_pkeh2"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_y8knx"]
+font = SubResource("SystemFont_pkeh2")
+
+[node name="SelectionOverlay" type="TextureRect" unique_id=2054220378 node_paths=PackedStringArray("grid", "title", "subtitle", "conf")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -391.0
+offset_top = -220.0
+offset_right = 391.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rnr46")
+script = ExtResource("2_oteov")
+grid = NodePath("VBoxContainer2/Items")
+title = NodePath("VBoxContainer2/Titles/Title")
+subtitle = NodePath("VBoxContainer2/Titles/Subtitle")
+conf = NodePath("VBoxContainer2/Confirmation")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1684801772]
+custom_maximum_size = Vector2(640, 360)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.52
+anchor_right = 0.5
+anchor_bottom = 0.52
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titles" type="VBoxContainer" parent="VBoxContainer2" unique_id=1674943837]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="VBoxContainer2/Titles" unique_id=967606586]
+layout_mode = 2
+text = "choose your class"
+label_settings = SubResource("LabelSettings_xhb0o")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Subtitle" type="Label" parent="VBoxContainer2/Titles" unique_id=1776366926]
+layout_mode = 2
+text = "subtitle"
+label_settings = SubResource("LabelSettings_x00a6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Items" type="GridContainer" parent="VBoxContainer2" unique_id=39905844]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+columns = 4
+
+[node name="Confirmation" type="Label" parent="VBoxContainer2" unique_id=122379939]
+layout_mode = 2
+size_flags_vertical = 10
+text = "press again to confirm"
+label_settings = SubResource("LabelSettings_y8knx")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
