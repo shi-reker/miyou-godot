@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="Heavy_base" format=3 uid="uid://cyyfdowukrnuo"]
 
 [ext_resource type="Script" uid="uid://by0g8pc1reeyb" path="res://Resources/Weapons/Main Variants/heavy_base_res.gd" id="1_y2utd"]
+[ext_resource type="Texture2D" uid="uid://cx6upum852gvy" path="res://Assets/Sprites/Weapons/Ring blade.png" id="2_mtgvs"]
 
 [resource]
 script = ExtResource("1_y2utd")
 subType = 6
+sprite = ExtResource("2_mtgvs")
 metadata/_custom_type_script = "uid://by0g8pc1reeyb"

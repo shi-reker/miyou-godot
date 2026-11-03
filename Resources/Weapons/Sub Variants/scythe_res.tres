@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="Heavy_base" format=3 uid="uid://b1dfftefg5d5q"]
 
 [ext_resource type="Script" uid="uid://by0g8pc1reeyb" path="res://Resources/Weapons/Main Variants/heavy_base_res.gd" id="1_8ugm0"]
+[ext_resource type="Texture2D" uid="uid://74g8ivuhrrfp" path="res://Assets/Sprites/Weapons/Scythe.png" id="2_rc2kk"]
 
 [resource]
 script = ExtResource("1_8ugm0")
 subType = 5
+sprite = ExtResource("2_rc2kk")
 metadata/_custom_type_script = "uid://by0g8pc1reeyb"

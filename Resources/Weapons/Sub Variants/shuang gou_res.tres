@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="Sword_base" format=3 uid="uid://qov8rdq7mq4t"]
 
 [ext_resource type="Script" uid="uid://bcq30wuiwxn8h" path="res://Resources/Weapons/Main Variants/sword_base_res.gd" id="1_rh4wf"]
+[ext_resource type="Texture2D" uid="uid://boxhky80pj6ra" path="res://Assets/Sprites/Weapons/Shuang gou.png" id="2_1rxne"]
 
 [resource]
 script = ExtResource("1_rh4wf")
 subType = 5
+sprite = ExtResource("2_1rxne")
 metadata/_custom_type_script = "uid://bcq30wuiwxn8h"

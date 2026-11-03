@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="Sword_base" format=3 uid="uid://r1fiobvvypnt"]
 
 [ext_resource type="Script" uid="uid://bcq30wuiwxn8h" path="res://Resources/Weapons/Main Variants/sword_base_res.gd" id="1_rytwg"]
+[ext_resource type="Texture2D" uid="uid://chn1qk7bymbrr" path="res://Assets/Sprites/Weapons/Odachi.png" id="2_7p8m1"]
 
 [resource]
 script = ExtResource("1_rytwg")
 subType = 6
+sprite = ExtResource("2_7p8m1")
 metadata/_custom_type_script = "uid://bcq30wuiwxn8h"

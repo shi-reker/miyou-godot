@@ -29,6 +29,7 @@ func _ready() -> void:
 		atkSpeed = 1/stats.atkSpeed
 
 func Setup(type:int, form:int):
+	sprite.flip_h = false
 	if type < 7 and form < 8:
 		stats = load("res://Resources/Weapons/Sub Variants/"+stats.transformations[type][form]+"_res.tres")
 	
@@ -52,6 +53,11 @@ func Setup(type:int, form:int):
 			hitbox.rotation_degrees = 90
 		_:
 			pass
+	
+	if isFlipped:
+		sprite.flip_h = true
+		hitbox.rotation *= -1
+		hitbox.position.x *= -1
 
 func _physics_process(delta: float) -> void:
 	if stats.alignment == stats.Allegiance.FRIENDLY:
@@ -61,27 +67,36 @@ func _physics_process(delta: float) -> void:
 func DoAttack():
 	if isAttacking:
 		return
-	print_debug("atk")
+	#print_debug("atk")
 	var thrustStart
 	var thrustEnd
 	var coorScale = hitbox.shape.height
-	
-	#dmg *= multi
+	var hStartCoor = position.x - coorScale/4
+	var hEndCoor = position.x + coorScale/4
 	
 	match stats.type:
 		stats.WeaponTypes.SWORD:
-			thrustStart = Vector2(position.x - coorScale/4, position.y - coorScale/2)
-			thrustEnd = Vector2(position.x + coorScale/4, position.y + coorScale/6)
+			if isFlipped:
+				hStartCoor = position.x + coorScale/4
+				hEndCoor = position.x - coorScale/4
+			thrustStart = Vector2(hStartCoor, position.y - coorScale/2)
+			thrustEnd = Vector2(hEndCoor, position.y + coorScale/6)
 			Thrust(thrustStart, thrustEnd)
 			Swing()
 		stats.WeaponTypes.DAGGER:
-			thrustStart = Vector2(position.x - coorScale/4, position.y - coorScale/3)
-			thrustEnd = Vector2(position.x + coorScale/4, position.y + coorScale/3)
+			if isFlipped:
+				hStartCoor = position.x + coorScale/4
+				hEndCoor = position.x - coorScale/4
+			thrustStart = Vector2(hStartCoor, position.y - coorScale/3)
+			thrustEnd = Vector2(hEndCoor, position.y + coorScale/3)
 			Thrust(thrustStart, thrustEnd)
 			Swing()
 		stats.WeaponTypes.HEAVY:
-			thrustStart = Vector2(position.x - coorScale/4, position.y - coorScale/2)
-			thrustEnd = Vector2(position.x + coorScale/4, position.y + coorScale/6)
+			if isFlipped:
+				hStartCoor = position.x + coorScale/4
+				hEndCoor = position.x - coorScale/4
+			thrustStart = Vector2(hStartCoor, position.y - coorScale/2)
+			thrustEnd = Vector2(hEndCoor, position.y + coorScale/6)
 			Thrust(thrustStart, thrustEnd)
 			Swing()
 		stats.WeaponTypes.FIREARM:
@@ -89,14 +104,21 @@ func DoAttack():
 		stats.WeaponTypes.DEX:
 			Swing()
 		stats.WeaponTypes.UNARMED:
-			thrustStart = Vector2(position.x - coorScale/4, position.y)
-			thrustEnd = Vector2(position.x + coorScale/3, position.y)
+			hEndCoor = position.x + coorScale/3
+			if isFlipped:
+				hStartCoor = position.x + coorScale/4
+				hEndCoor = position.x - coorScale/3
+			thrustStart = Vector2(hStartCoor, position.y)
+			thrustEnd = Vector2(hEndCoor, position.y)
 			Thrust(thrustStart, thrustEnd)
 		stats.WeaponTypes.POLEARM:
-			thrustStart = Vector2(position.x - coorScale/4, position.y)
-			thrustEnd = Vector2(position.x + coorScale/1.5, position.y)
+			hEndCoor = position.x + coorScale/1.5
+			if isFlipped:
+				hStartCoor = position.x + coorScale/4
+				hEndCoor = position.x - coorScale/1.5
+			thrustStart = Vector2(hStartCoor, position.y)
+			thrustEnd = Vector2(hEndCoor, position.y)
 			Thrust(thrustStart, thrustEnd)
-	
 
 func Swing():
 	var oriRotation = rotation
@@ -116,13 +138,8 @@ func Swing():
 	tween.tween_property(self, "rotation", oriRotation, 0.18)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	tween.tween_callback(func(): isAttacking = false)
-	
-	#dmg = dmgCache
 
 func Thrust(startPos:Vector2, endPos:Vector2):
-	if isFlipped:
-		endPos *= -1
-	
 	var oriPos = position
 	
 	position = startPos
@@ -134,8 +151,6 @@ func Thrust(startPos:Vector2, endPos:Vector2):
 	tween.tween_property(self, "position", oriPos, 0.18)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	tween.tween_callback(func(): isAttacking = false)
-	
-	#dmg = dmgCache
 
 func Shoot():
 	var t:Texture2D
@@ -153,4 +168,3 @@ func Shoot():
 	var bullet:Projectile = projectile.instantiate()
 	get_parent().get_parent().add_child(bullet)
 	bullet.Setup(dmg, 1200, stats.alignment, [5, 30], t, global_position, hitbox.global_position)
-	#dmg = stats.dmg
