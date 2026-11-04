@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="Heavy_base" format=3 uid="uid://dibysm7ey1hgu"]
 
 [ext_resource type="Script" uid="uid://by0g8pc1reeyb" path="res://Resources/Weapons/Main Variants/heavy_base_res.gd" id="1_u6qiv"]
+[ext_resource type="Texture2D" uid="uid://xtue060dr8e2" path="res://Assets/Sprites/Weapons/Glaive.png" id="2_0473e"]
 
 [resource]
 script = ExtResource("1_u6qiv")
 subType = 1
+sprite = ExtResource("2_0473e")
 metadata/_custom_type_script = "uid://by0g8pc1reeyb"

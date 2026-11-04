@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="Dex_base" format=3 uid="uid://bqgmvsbtg5fw2"]
 
 [ext_resource type="Script" uid="uid://cjptflrlb7axe" path="res://Resources/Weapons/Main Variants/dex_base_res.gd" id="1_agknt"]
+[ext_resource type="Texture2D" uid="uid://bmrdscs8ggk5m" path="res://Assets/Sprites/Weapons/Haladie.png" id="2_ji0c6"]
 
 [resource]
 script = ExtResource("1_agknt")
 subType = 2
+sprite = ExtResource("2_ji0c6")
 metadata/_custom_type_script = "uid://cjptflrlb7axe"

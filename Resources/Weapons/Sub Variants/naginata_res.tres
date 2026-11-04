@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="Polearm_base" format=3 uid="uid://2jkv2elj61dm"]
 
 [ext_resource type="Script" uid="uid://dt6de52yki8ju" path="res://Resources/Weapons/Main Variants/polearm_base_res.gd" id="1_e1mix"]
+[ext_resource type="Texture2D" uid="uid://bmlgygvs3keck" path="res://Assets/Sprites/Weapons/Naginata.png" id="2_7agph"]
 
 [resource]
 script = ExtResource("1_e1mix")
 subType = 6
+sprite = ExtResource("2_7agph")
 metadata/_custom_type_script = "uid://dt6de52yki8ju"
