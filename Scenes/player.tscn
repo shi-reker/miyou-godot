@@ -3,12 +3,19 @@
 [ext_resource type="Script" uid="uid://3kr1x4g8j4jn" path="res://Scripts/player_controller.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://ck5nfexd6p7oo" path="res://Assets/1784191428514.png" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://c6rhryxsboula" path="res://Scenes/weapon.tscn" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://da4wqos3jkcal" path="res://Scripts/skills.gd" id="4_vgqql"]
+[ext_resource type="Resource" uid="uid://b52iqau5ij2p7" path="res://Resources/Skills/Base/empty_slot.tres" id="5_fkybt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lq7nq"]
 
-[node name="Player Character" type="CharacterBody2D" unique_id=422138606 node_paths=PackedStringArray("aimRay", "groundRay", "sprite", "weapon")]
+[node name="Player Character" type="CharacterBody2D" unique_id=422138606 node_paths=PackedStringArray("aimRay", "skill1", "skill2", "skill3", "skill4", "passive", "groundRay", "sprite", "weapon")]
 script = ExtResource("1_cvnsp")
 aimRay = NodePath("Aiming Ray")
+skill1 = NodePath("Skills/Skill1")
+skill2 = NodePath("Skills/Skill2")
+skill3 = NodePath("Skills/Skill3")
+skill4 = NodePath("Skills/Skill4")
+passive = NodePath("Skills/Passive")
 groundRay = NodePath("Ground Ray")
 sprite = NodePath("Sprite2D")
 weapon = NodePath("Weapon")
@@ -39,15 +46,30 @@ position = Vector2(10, 0)
 
 [node name="Skills" type="Node" parent="." unique_id=1902488759]
 
-[node name="Skill1" type="Node2D" parent="Skills" unique_id=1183680017]
+[node name="Skill1" type="Node2D" parent="Skills" unique_id=1183680017 node_paths=PackedStringArray("player")]
+script = ExtResource("4_vgqql")
+equippedClassSkill = ExtResource("5_fkybt")
+player = NodePath("../..")
 
-[node name="Skill2" type="Node2D" parent="Skills" unique_id=2117304693]
+[node name="Skill2" type="Node2D" parent="Skills" unique_id=2117304693 node_paths=PackedStringArray("player")]
+script = ExtResource("4_vgqql")
+equippedClassSkill = ExtResource("5_fkybt")
+player = NodePath("../..")
 
-[node name="Skill3" type="Node2D" parent="Skills" unique_id=1752825894]
+[node name="Skill3" type="Node2D" parent="Skills" unique_id=1752825894 node_paths=PackedStringArray("player")]
+script = ExtResource("4_vgqql")
+equippedClassSkill = ExtResource("5_fkybt")
+player = NodePath("../..")
 
-[node name="Skill4" type="Node2D" parent="Skills" unique_id=118707699]
+[node name="Skill4" type="Node2D" parent="Skills" unique_id=118707699 node_paths=PackedStringArray("player")]
+script = ExtResource("4_vgqql")
+equippedClassSkill = ExtResource("5_fkybt")
+player = NodePath("../..")
 
-[node name="Passive" type="Node2D" parent="Skills" unique_id=2134973124]
+[node name="Passive" type="Node2D" parent="Skills" unique_id=2134973124 node_paths=PackedStringArray("player")]
+script = ExtResource("4_vgqql")
+equippedClassSkill = ExtResource("5_fkybt")
+player = NodePath("../..")
 
 [node name="Effects" type="Node" parent="." unique_id=1092484594]
 

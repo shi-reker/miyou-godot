@@ -2,6 +2,13 @@ extends Controller
 class_name Player
 
 @export var aimRay:RayCast2D
+@export var skill1:Skill_processor
+@export var skill2:Skill_processor
+@export var skill3:Skill_processor
+@export var skill4:Skill_processor
+@export var passive:Skill_processor
+@export var buffs:Node2D
+@export var debuffs:Node2D
 
 var skill_1
 var skill_2
@@ -86,6 +93,7 @@ func GetInput():
 	jump = Input.is_action_pressed("Jump")
 	dash = Input.is_action_pressed("Dash")
 	attack = Input.is_action_pressed("Attack")
+	
 	#print_debug(attack)
 
 func DoDash(delta:float, xMove:float) -> float:
