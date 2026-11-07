@@ -1,47 +1,53 @@
 extends Skill_base
 class_name Vanguard_skill_base
 
-@export var baseSkillName:SkillCodes
+@export var skillName:SkillCodes
+@export var skillType:skillActivation
 
 enum SkillCodes {
-	GRAPPLING_HOOK,
-	DASH,
-	DOUBLE_JUMP,
-	HORSE_KICK,
-	STRENGTHEN,
-	BULWARK,
-	UNCHAINED_FORCE,
-	ORIGIN_FORCE,
-	COLLECTOR,
+	TACKLE,
+	BASH,
+	HARDEN,
+	ADAPTIVE_SKIN,
+	PRESS,
+	ONEMAN_ARMY,
+	INDOMITABLE_SOUL,
+	REVERSE_DAMAGE,
+	SWIFT_RECOVERY,
 }
 
-func GrapplingHook():
+enum skillActivation {
+	ACTIVE,
+	PASSIVE
+}
+
+func Tackle():
 	pass
-func Dash():
+func Bash():
 	pass
-func DoubleJump():
+func Harden():
 	pass
-func HorseKick():
+func AdaptiveSkin():
 	pass
-func Strengthen():
+func Press():
 	pass
-func Bulwark():
+func OneManArmy():
 	pass
-func UnchainedForce():
+func IndomSoul():
 	pass
-func OriginForce():
+func RevDamage():
 	pass
-func Collector():
+func SwiftRecovery():
 	pass
 
 var skillFuncs: Dictionary[SkillCodes, Callable] = {
-	SkillCodes.GRAPPLING_HOOK: GrapplingHook,
-	SkillCodes.DASH: Dash,
-	SkillCodes.DOUBLE_JUMP: DoubleJump,
-	SkillCodes.HORSE_KICK: HorseKick,
-	SkillCodes.STRENGTHEN: Strengthen,
-	SkillCodes.BULWARK: Bulwark,
-	SkillCodes.UNCHAINED_FORCE: UnchainedForce,
-	SkillCodes.ORIGIN_FORCE: OriginForce,
-	SkillCodes.COLLECTOR: Collector,
+	SkillCodes.TACKLE: Tackle,
+	SkillCodes.BASH: Bash,
+	SkillCodes.HARDEN: Harden,
+	SkillCodes.ADAPTIVE_SKIN: AdaptiveSkin,
+	SkillCodes.PRESS: Press,
+	SkillCodes.ONEMAN_ARMY: OneManArmy,
+	SkillCodes.INDOMITABLE_SOUL: IndomSoul,
+	SkillCodes.REVERSE_DAMAGE: RevDamage,
+	SkillCodes.SWIFT_RECOVERY: SwiftRecovery,
 }

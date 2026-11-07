@@ -10,25 +10,22 @@ class_name Player
 @export var buffs:Node2D
 @export var debuffs:Node2D
 
-var skill_1
-var skill_2
-var skill_3
-var skill_4
-var dash
 var interact
 
 var currentWeapon:Weapon_base.WeaponTypes
 var atkCD:float = 0
-var dashDur:float = 0.05
-var dashTime:float = -1
-var dashVal:float = 1000
-var dashCD:float = 2
-#var isAttacking:bool = false
-#var cdTimers:Dictionary = {
-	#DASH = 0
-#}
+
+var skillFunctions:Dictionary
+
+const SKILL_ACTIONS: Array[String] = ["Skill 1", "Skill 2", "Skill 3", "Skill 4"]
 
 func _ready() -> void:
+	skillFunctions = {
+		"Skill 1": skill1.ActivateSkill,
+		"Skill 2": skill2.ActivateSkill,
+		"Skill 3": skill3.ActivateSkill,
+		"Skill 4": skill4.ActivateSkill
+	}
 	Setup("res://Resources/Classes/Variants/no_class_res.tres", Weapon_base.WeaponTypes.HEAVY)
 
 func Setup(classPath:String, wType:Weapon_base.WeaponTypes = currentWeapon):
@@ -60,6 +57,7 @@ func _physics_process(delta: float) -> void:
 			airTime = 0
 		else:
 			isJumping = true
+			print_debug(delta)
 	
 	if !isGrounded:
 		xMove *= 0.4
@@ -77,9 +75,8 @@ func _physics_process(delta: float) -> void:
 			xMomentum = 0
 			yMove = 0
 	
-	xMove = DoDash(delta, xMove)
+	#xMove = DoDash(delta, xMove)
 	xMove += xMomentum
-	
 	MoveChar(xMove, yMove)
 	
 	atkCD += delta
@@ -88,36 +85,17 @@ func _physics_process(delta: float) -> void:
 			atkCD = 0
 			weapon.DoAttack()
 
+func _unhandled_input(event: InputEvent) -> void:
+	for i in SKILL_ACTIONS.size():
+		if event.is_action_pressed(SKILL_ACTIONS[i]):
+			skillFunctions[SKILL_ACTIONS[i]].call(self, self)
+			return
+
 func GetInput():
 	moveDir = Input.get_axis("Backwards", "Forward")
 	jump = Input.is_action_pressed("Jump")
-	dash = Input.is_action_pressed("Dash")
 	attack = Input.is_action_pressed("Attack")
-	
 	#print_debug(attack)
-
-func DoDash(delta:float, xMove:float) -> float:
-	if dashTime < 0 and dashCD >= 2:
-		if dash:
-			dashTime = 0
-			dashCD = 0
-		else:
-			return xMove
-	
-	if dashTime >= 0 and dashTime <= dashDur:
-		dashTime += delta
-		#dashCD -= delta
-		if xMove < 0:
-			xMove -= dashVal
-		else:
-			xMove += dashVal
-	else:
-		dashTime = -1
-		if dashCD < 2:
-			dashCD += delta
-			print_debug(dashCD)
-	
-	return xMove
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Weapon:

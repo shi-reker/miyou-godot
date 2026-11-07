@@ -1,7 +1,8 @@
 extends Skill_base
-class_name No_class_skill_base
+class_name NoClass_skill_base
 
-@export var baseSkillName:SkillCodes
+@export var skillName:SkillCodes
+@export var skillType:skillActivation
 
 enum SkillCodes {
 	GRAPPLING_HOOK,
@@ -15,10 +16,25 @@ enum SkillCodes {
 	COLLECTOR,
 }
 
+enum skillActivation {
+	ACTIVE,
+	PASSIVE
+}
+
 func GrapplingHook():
 	pass
 func Dash():
-	pass
+	var xMove = source.xMove
+	var dashVal = 1000
+	if prog >= 0 and prog <= dur:
+		if xMove < 0:
+			xMove -= dashVal
+		else:
+			xMove += dashVal
+	else:
+		prog = -1
+	
+	return xMove
 func DoubleJump():
 	pass
 func HorseKick():
