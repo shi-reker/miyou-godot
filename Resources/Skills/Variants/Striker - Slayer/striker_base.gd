@@ -40,7 +40,9 @@ func SoulStrike():
 func FirstStrike():
 	pass
 
-var skillFuncs: Dictionary[SkillCodes, Callable] = {
+func def() -> void:
+	sName = skillName
+	skillFuncs = {
 	SkillCodes.BARRAGE: Barrage,
 	SkillCodes.KILLER_INSTINCT: KillerInstinct,
 	SkillCodes.VITAL_STRIKE: VitalStrike,

@@ -40,14 +40,16 @@ func EmKit():
 func Decimation():
 	pass
 
-var skillFuncs: Dictionary[SkillCodes, Callable] = {
-	SkillCodes.SHATTERING_IMPACT: ShatterImpact,
-	SkillCodes.AMPLIFICATION: Amp,
-	SkillCodes.BLAST_STRIKE: BlastStrike,
-	SkillCodes.CHARGE_UP: ChargeUp,
-	SkillCodes.DEPLOY_BARRIER: Barrier,
-	SkillCodes.NULLIFICATION: Nullification,
-	SkillCodes.VACUUM_IMPLOSION: VacImplosion,
-	SkillCodes.EMERGENCY_KIT: EmKit,
-	SkillCodes.DECIMATION: Decimation,
-}
+func def() -> void:
+	sName = skillName
+	skillFuncs = {
+		SkillCodes.SHATTERING_IMPACT: ShatterImpact,
+		SkillCodes.AMPLIFICATION: Amp,
+		SkillCodes.BLAST_STRIKE: BlastStrike,
+		SkillCodes.CHARGE_UP: ChargeUp,
+		SkillCodes.DEPLOY_BARRIER: Barrier,
+		SkillCodes.NULLIFICATION: Nullification,
+		SkillCodes.VACUUM_IMPLOSION: VacImplosion,
+		SkillCodes.EMERGENCY_KIT: EmKit,
+		SkillCodes.DECIMATION: Decimation,
+	}

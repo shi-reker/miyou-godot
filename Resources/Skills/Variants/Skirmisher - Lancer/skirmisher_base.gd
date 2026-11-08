@@ -40,7 +40,9 @@ func Ambush():
 func sixSense():
 	pass
 
-var skillFuncs: Dictionary[SkillCodes, Callable] = {
+func def() -> void:
+	sName = skillName
+	skillFuncs = {
 	SkillCodes.SPRINT: Sprint,
 	SkillCodes.FOLLOW_UP: FollowUp,
 	SkillCodes.STING: Sting,

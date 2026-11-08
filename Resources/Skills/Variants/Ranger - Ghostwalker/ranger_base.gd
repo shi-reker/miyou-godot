@@ -40,7 +40,9 @@ func CloudStride():
 func Silence():
 	pass
 
-var skillFuncs: Dictionary[SkillCodes, Callable] = {
+func def() -> void:
+	sName = skillName
+	skillFuncs = {
 	SkillCodes.FLICKER: Flicker,
 	SkillCodes.SPIKE_MINE: SpikeMine,
 	SkillCodes.GHOST_STEP: GhostStep,

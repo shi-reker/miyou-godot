@@ -40,7 +40,9 @@ func RevDamage():
 func SwiftRecovery():
 	pass
 
-var skillFuncs: Dictionary[SkillCodes, Callable] = {
+func def() -> void:
+	sName = skillName
+	skillFuncs = {
 	SkillCodes.TACKLE: Tackle,
 	SkillCodes.BASH: Bash,
 	SkillCodes.HARDEN: Harden,

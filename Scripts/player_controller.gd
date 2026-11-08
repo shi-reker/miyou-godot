@@ -14,7 +14,7 @@ var interact
 
 var currentWeapon:Weapon_base.WeaponTypes
 var atkCD:float = 0
-
+var dlt:float
 var skillFunctions:Dictionary
 
 const SKILL_ACTIONS: Array[String] = ["Skill 1", "Skill 2", "Skill 3", "Skill 4"]
@@ -43,59 +43,51 @@ func Setup(classPath:String, wType:Weapon_base.WeaponTypes = currentWeapon):
 
 func _physics_process(delta: float) -> void:
 	GetGrounded()
-	GetInput()
-	
-	var xMove:float = moveDir * speed
-	var yMove:float = 0
-	
-	if isJumping:
-		airTime += delta
-		if airTime < jumpTime and isGrounded:
-			isGrounded = false
-		elif airTime > jumpTime and !isGrounded:
-			isJumping = false
-			airTime = 0
-		else:
-			isJumping = true
-			print_debug(delta)
+	xMove = Input.get_axis("Backwards", "Forward") * speed
+	dlt = delta
 	
 	if !isGrounded:
 		xMove *= 0.4
-		if !isJumping:
-			jump = false
-			yMove = fallSpeed
-		else:
-			yMove = jumpHeight
+		Jump()
 	else:
-		if jump:
-			xMomentum = xMove
-			isJumping = true
-			yMove = jumpHeight
-		else:
-			xMomentum = 0
-			yMove = 0
-	
-	#xMove = DoDash(delta, xMove)
+		yMove = 0
+		
 	xMove += xMomentum
-	MoveChar(xMove, yMove)
+	MoveChar()
 	
 	atkCD += delta
-	if attack and !weapon.isAttacking:
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_pressed("Jump") and isGrounded:
+		isJumping = true
+		xMomentum = xMove
+		Jump()
+	
+	if Input.is_action_pressed("Attack") and !weapon.isAttacking:
 		if atkCD >= weapon.atkSpeed:
 			atkCD = 0
 			weapon.DoAttack()
-
-func _unhandled_input(event: InputEvent) -> void:
+	
 	for i in SKILL_ACTIONS.size():
 		if event.is_action_pressed(SKILL_ACTIONS[i]):
 			skillFunctions[SKILL_ACTIONS[i]].call(self, self)
 			return
 
-func GetInput():
-	moveDir = Input.get_axis("Backwards", "Forward")
-	jump = Input.is_action_pressed("Jump")
-	attack = Input.is_action_pressed("Attack")
-	#print_debug(attack)
+func Jump():
+	if !isJumping:
+		Fall()
+	else:
+		airTime += dlt
+		if airTime < jumpTime and isGrounded:
+			isGrounded = false
+		elif airTime > jumpTime and !isGrounded:
+			isJumping = false
+			airTime = 0
+		yMove = jumpHeight
+
+func Fall():
+	#jump = false
+	yMove = fallSpeed
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Weapon:

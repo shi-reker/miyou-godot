@@ -13,7 +13,8 @@ var mana:float
 var speed:float
 var jumpHeight:float
 var moveDir:float
-
+var xMove:float = 0
+var yMove:float = 0
 var jump:bool
 var attack:bool
 
@@ -28,19 +29,21 @@ var isJumping:bool = false
 func GetGrounded():
 	if groundRay.is_colliding():
 		var colClass = groundRay.get_collider()
-		if colClass is Ground:
-			isGrounded = true
-			#print_debug(colName[2])
-		else:
+		if isJumping:
 			isGrounded = false
-			#print_debug(colName[0])
+		else:
+			if colClass is Ground:
+				isGrounded = true
+				xMomentum = 0
+			else:
+				isGrounded = false
 	else:
 		isGrounded = false
 
 func GetInput():
 	pass
 
-func MoveChar(xMove:float, yMove:float):
+func MoveChar():
 	velocity.y += yMove
 	
 	if xMove: #apply horizontal movement
@@ -48,10 +51,11 @@ func MoveChar(xMove:float, yMove:float):
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
-	UpdateVisuals(xMove)
+	UpdateVisuals()
+	#print_debug(yMove)
 	move_and_slide() #move
 
-func UpdateVisuals(xMove:float):
+func UpdateVisuals():
 	if xMove < 0:
 		sprite.flip_h = true
 		if weapon.position.x > 0 and weapon.isAttacking == false:

@@ -50,14 +50,16 @@ func OriginForce():
 func Collector():
 	pass
 
-var skillFuncs: Dictionary[SkillCodes, Callable] = {
-	SkillCodes.GRAPPLING_HOOK: GrapplingHook,
-	SkillCodes.DASH: Dash,
-	SkillCodes.DOUBLE_JUMP: DoubleJump,
-	SkillCodes.HORSE_KICK: HorseKick,
-	SkillCodes.STRENGTHEN: Strengthen,
-	SkillCodes.BULWARK: Bulwark,
-	SkillCodes.UNCHAINED_FORCE: UnchainedForce,
-	SkillCodes.ORIGIN_FORCE: OriginForce,
-	SkillCodes.COLLECTOR: Collector,
-}
+func def() -> void:
+	sName = skillName
+	skillFuncs = {
+		SkillCodes.GRAPPLING_HOOK: GrapplingHook,
+		SkillCodes.DASH: Dash,
+		SkillCodes.DOUBLE_JUMP: DoubleJump,
+		SkillCodes.HORSE_KICK: HorseKick,
+		SkillCodes.STRENGTHEN: Strengthen,
+		SkillCodes.BULWARK: Bulwark,
+		SkillCodes.UNCHAINED_FORCE: UnchainedForce,
+		SkillCodes.ORIGIN_FORCE: OriginForce,
+		SkillCodes.COLLECTOR: Collector,
+	}

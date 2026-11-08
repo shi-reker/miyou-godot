@@ -40,7 +40,9 @@ func SummonBeast():
 func DefierBlessing():
 	pass
 
-var skillFuncs: Dictionary[SkillCodes, Callable] = {
+func def() -> void:
+	sName = skillName
+	skillFuncs = {
 	SkillCodes.ENCHANT: Enchant,
 	SkillCodes.CURSE: Curse,
 	SkillCodes.SHIELD: Shield,

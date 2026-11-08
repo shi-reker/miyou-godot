@@ -24,8 +24,8 @@ func _physics_process(delta: float) -> void:
 	GetGrounded()
 	GetInput()
 	
-	var xMove:float = moveDir * speed
-	var yMove:float = 0
+	xMove = moveDir * speed
+	yMove = 0
 	
 	if isJumping:
 		airTime += delta
@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	
 	xMove += xMomentum
 	
-	MoveChar(xMove, yMove)
+	MoveChar()
 
 func GetInput():
 	moveDir = randf()

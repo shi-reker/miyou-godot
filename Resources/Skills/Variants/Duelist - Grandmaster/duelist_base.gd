@@ -40,7 +40,9 @@ func Pursuit():
 func FocusedIntent():
 	pass
 
-var skillFuncs: Dictionary[SkillCodes, Callable] = {
+func def() -> void:
+	sName = skillName
+	skillFuncs = {
 	SkillCodes.INSTANT_STRIKE: InstantStrike,
 	SkillCodes.DOUBLE_IMPACT: DoubleImpact,
 	SkillCodes.PARRY: Parry,
