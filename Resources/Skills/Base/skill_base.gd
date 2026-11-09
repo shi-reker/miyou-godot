@@ -10,8 +10,9 @@ var source:Player
 var target:Variant
 var prog = 0
 var cdTimer = 0
-var skillFuncs:Dictionary
-var sName
 
-func def():
+func activate() -> void:
+	pass
+
+func tick(_delta: float) -> void:
 	pass

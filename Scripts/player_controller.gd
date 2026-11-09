@@ -86,7 +86,6 @@ func Jump():
 		yMove = jumpHeight
 
 func Fall():
-	#jump = false
 	yMove = fallSpeed
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

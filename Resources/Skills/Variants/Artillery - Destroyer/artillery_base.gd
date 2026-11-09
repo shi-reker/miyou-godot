@@ -40,16 +40,44 @@ func EmKit():
 func Decimation():
 	pass
 
-func def() -> void:
-	sName = skillName
-	skillFuncs = {
-		SkillCodes.SHATTERING_IMPACT: ShatterImpact,
-		SkillCodes.AMPLIFICATION: Amp,
-		SkillCodes.BLAST_STRIKE: BlastStrike,
-		SkillCodes.CHARGE_UP: ChargeUp,
-		SkillCodes.DEPLOY_BARRIER: Barrier,
-		SkillCodes.NULLIFICATION: Nullification,
-		SkillCodes.VACUUM_IMPLOSION: VacImplosion,
-		SkillCodes.EMERGENCY_KIT: EmKit,
-		SkillCodes.DECIMATION: Decimation,
-	}
+func activate() -> void:
+	match skillName:
+		SkillCodes.SHATTERING_IMPACT:
+			prog = 0
+		SkillCodes.AMPLIFICATION:
+			prog = 0
+		SkillCodes.BLAST_STRIKE:
+			prog = 0
+		SkillCodes.CHARGE_UP:
+			prog = 0
+		SkillCodes.DEPLOY_BARRIER:
+			prog = 0
+		SkillCodes.NULLIFICATION:
+			prog = 0
+		SkillCodes.VACUUM_IMPLOSION:
+			prog = 0
+		SkillCodes.EMERGENCY_KIT:
+			prog = 0
+		SkillCodes.DECIMATION:
+			prog = 0
+
+func tick(delta: float) -> void:
+	match skillName:
+		SkillCodes.SHATTERING_IMPACT: 
+			ShatterImpact()
+		SkillCodes.AMPLIFICATION: 
+			Amp()
+		SkillCodes.BLAST_STRIKE: 
+			BlastStrike()
+		SkillCodes.CHARGE_UP: 
+			ChargeUp()
+		SkillCodes.DEPLOY_BARRIER: 
+			Barrier()
+		SkillCodes.NULLIFICATION: 
+			Nullification()
+		SkillCodes.VACUUM_IMPLOSION: 
+			VacImplosion()
+		SkillCodes.EMERGENCY_KIT: 
+			EmKit()
+		SkillCodes.DECIMATION: 
+			Decimation()

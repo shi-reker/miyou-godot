@@ -40,16 +40,44 @@ func SoulStrike():
 func FirstStrike():
 	pass
 
-func def() -> void:
-	sName = skillName
-	skillFuncs = {
-	SkillCodes.BARRAGE: Barrage,
-	SkillCodes.KILLER_INSTINCT: KillerInstinct,
-	SkillCodes.VITAL_STRIKE: VitalStrike,
-	SkillCodes.BLOODLUST: Bloodlust,
-	SkillCodes.EXECUTION: Execution,
-	SkillCodes.SURA: Sura,
-	SkillCodes.ANNIHILATION: Annihilation,
-	SkillCodes.SOUL_STRIKE: SoulStrike,
-	SkillCodes.FIRST_STRIKE: FirstStrike,
-}
+func activate() -> void:
+	match skillName:
+		SkillCodes.BARRAGE:
+			prog = 0
+		SkillCodes.KILLER_INSTINCT:
+			prog = 0
+		SkillCodes.VITAL_STRIKE:
+			prog = 0
+		SkillCodes.BLOODLUST:
+			prog = 0
+		SkillCodes.EXECUTION:
+			prog = 0
+		SkillCodes.SURA:
+			prog = 0
+		SkillCodes.ANNIHILATION:
+			prog = 0
+		SkillCodes.SOUL_STRIKE:
+			prog = 0
+		SkillCodes.FIRST_STRIKE:
+			prog = 0
+
+func tick(delta: float) -> void:
+	match skillName:
+		SkillCodes.BARRAGE:
+			Barrage()
+		SkillCodes.KILLER_INSTINCT:
+			KillerInstinct()
+		SkillCodes.VITAL_STRIKE:
+			VitalStrike()
+		SkillCodes.BLOODLUST:
+			Bloodlust()
+		SkillCodes.EXECUTION:
+			Execution()
+		SkillCodes.SURA:
+			Sura()
+		SkillCodes.ANNIHILATION:
+			Annihilation()
+		SkillCodes.SOUL_STRIKE:
+			SoulStrike()
+		SkillCodes.FIRST_STRIKE:
+			FirstStrike()

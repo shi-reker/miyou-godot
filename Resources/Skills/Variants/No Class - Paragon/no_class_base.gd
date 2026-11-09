@@ -24,17 +24,15 @@ enum skillActivation {
 func GrapplingHook():
 	pass
 func Dash():
-	var xMove = source.xMove
-	var dashVal = 1000
 	if prog >= 0 and prog <= dur:
-		if xMove < 0:
-			xMove -= dashVal
+		if source.xMove < 0:
+			source.xMove -= 1000
 		else:
-			xMove += dashVal
+			source.xMove += 1000
 	else:
 		prog = -1
-	
-	return xMove
+		cdTimer = cd
+
 func DoubleJump():
 	pass
 func HorseKick():
@@ -50,16 +48,44 @@ func OriginForce():
 func Collector():
 	pass
 
-func def() -> void:
-	sName = skillName
-	skillFuncs = {
-		SkillCodes.GRAPPLING_HOOK: GrapplingHook,
-		SkillCodes.DASH: Dash,
-		SkillCodes.DOUBLE_JUMP: DoubleJump,
-		SkillCodes.HORSE_KICK: HorseKick,
-		SkillCodes.STRENGTHEN: Strengthen,
-		SkillCodes.BULWARK: Bulwark,
-		SkillCodes.UNCHAINED_FORCE: UnchainedForce,
-		SkillCodes.ORIGIN_FORCE: OriginForce,
-		SkillCodes.COLLECTOR: Collector,
-	}
+func activate() -> void:
+	match skillName:
+		SkillCodes.GRAPPLING_HOOK:
+			prog = 0
+		SkillCodes.DASH:
+			prog = 0
+		SkillCodes.DOUBLE_JUMP:
+			prog = 0
+		SkillCodes.HORSE_KICK:
+			prog = 0
+		SkillCodes.STRENGTHEN:
+			prog = 0
+		SkillCodes.BULWARK:
+			prog = 0
+		SkillCodes.UNCHAINED_FORCE:
+			prog = 0
+		SkillCodes.ORIGIN_FORCE:
+			prog = 0
+		SkillCodes.COLLECTOR:
+			prog = 0
+
+func tick(delta: float) -> void:
+	match skillName:
+		SkillCodes.GRAPPLING_HOOK:
+			GrapplingHook()
+		SkillCodes.DASH:
+			Dash()
+		SkillCodes.DOUBLE_JUMP:
+			DoubleJump()
+		SkillCodes.HORSE_KICK:
+			HorseKick()
+		SkillCodes.STRENGTHEN:
+			Strengthen()
+		SkillCodes.BULWARK:
+			Bulwark()
+		SkillCodes.UNCHAINED_FORCE:
+			UnchainedForce()
+		SkillCodes.ORIGIN_FORCE:
+			OriginForce()
+		SkillCodes.COLLECTOR:
+			Collector()
