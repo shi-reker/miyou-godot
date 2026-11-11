@@ -25,13 +25,21 @@ func GrapplingHook():
 	pass
 func Dash():
 	if prog >= 0 and prog <= dur:
+		#print_debug(prog)
 		if source.xMove < 0:
-			source.xMove -= 1000
+			print_debug("dash left")
+			#print_debug(source.xMove)
+			source.xMoveBonus -= 600
 		else:
-			source.xMove += 1000
+			print_debug("dash right")
+			#print_debug(source.xMove)
+			source.xMoveBonus += 600
 	else:
 		prog = -1
 		cdTimer = cd
+		source.xMoveBonus = 0
+		print_debug(cdTimer)
+		#charge -= 1
 
 func DoubleJump():
 	pass

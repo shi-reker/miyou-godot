@@ -14,6 +14,7 @@ var interact
 
 var currentWeapon:Weapon_base.WeaponTypes
 var atkCD:float = 0
+var xMoveBonus:float = 0
 var dlt:float
 var skillFunctions:Dictionary
 
@@ -52,13 +53,16 @@ func _physics_process(delta: float) -> void:
 	else:
 		yMove = 0
 		
-	xMove += xMomentum
+	xMove += xMomentum + xMoveBonus
 	MoveChar()
+	
+	if xMove != 0:
+		print_debug(xMove)
 	
 	atkCD += delta
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_pressed("Jump") and isGrounded:
+	if Input.is_action_just_pressed("Jump") and isGrounded:
 		isJumping = true
 		xMomentum = xMove
 		Jump()
@@ -69,7 +73,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			weapon.DoAttack()
 	
 	for i in SKILL_ACTIONS.size():
-		if event.is_action_pressed(SKILL_ACTIONS[i]):
+		if Input.is_action_just_pressed(SKILL_ACTIONS[i]):
 			skillFunctions[SKILL_ACTIONS[i]].call(self, self)
 			return
 

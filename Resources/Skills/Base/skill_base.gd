@@ -4,12 +4,13 @@ class_name Skill_base
 @export var cd:float
 @export var dur:float
 @export var dmg:float
-@export var charge:int
+@export var maxCharge:int
 
 var source:Player
 var target:Variant
-var prog = 0
-var cdTimer = 0
+var prog = -1
+var cdTimer = -1
+var charge = maxCharge
 
 func activate() -> void:
 	pass

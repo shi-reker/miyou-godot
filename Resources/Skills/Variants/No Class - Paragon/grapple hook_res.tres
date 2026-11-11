@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_2vjmx")
 cd = 3.0
-dur = -1.0
-charge = 2
+dur = 0.2
+maxCharge = 2
 metadata/_custom_type_script = "uid://ctdyve313rk3r"

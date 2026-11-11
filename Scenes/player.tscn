@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c6rhryxsboula" path="res://Scenes/weapon.tscn" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://da4wqos3jkcal" path="res://Scripts/skills.gd" id="4_vgqql"]
 [ext_resource type="Resource" uid="uid://b52iqau5ij2p7" path="res://Resources/Skills/Base/empty_slot.tres" id="5_fkybt"]
+[ext_resource type="Resource" uid="uid://c6s26yl7v3p5f" path="res://Resources/Skills/Variants/No Class - Paragon/dash_res.tres" id="5_x3wgy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lq7nq"]
 
@@ -50,7 +51,7 @@ position = Vector2(10, 0)
 
 [node name="Skill1" type="Node2D" parent="Skills" unique_id=1183680017 node_paths=PackedStringArray("player")]
 script = ExtResource("4_vgqql")
-skill = ExtResource("5_fkybt")
+skill = ExtResource("5_x3wgy")
 player = NodePath("../..")
 
 [node name="Skill2" type="Node2D" parent="Skills" unique_id=2117304693 node_paths=PackedStringArray("player")]

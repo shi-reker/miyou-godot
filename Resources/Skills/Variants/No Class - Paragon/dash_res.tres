@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NoClass_skill_base" format=3 uid="uid://c6s26yl7v3p5f"]
+
+[ext_resource type="Script" uid="uid://ctdyve313rk3r" path="res://Resources/Skills/Variants/No Class - Paragon/no_class_base.gd" id="1_uylce"]
+
+[resource]
+script = ExtResource("1_uylce")
+skillName = 1
+cd = 2.0
+dur = 0.05
+maxCharge = 2
+metadata/_custom_type_script = "uid://ctdyve313rk3r"
