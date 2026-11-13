@@ -69,10 +69,7 @@ script = ExtResource("4_vgqql")
 skill = ExtResource("5_fkybt")
 player = NodePath("../..")
 
-[node name="Passive" type="Node2D" parent="Skills" unique_id=2134973124 node_paths=PackedStringArray("player")]
-script = ExtResource("4_vgqql")
-skill = ExtResource("5_fkybt")
-player = NodePath("../..")
+[node name="Passive" type="Node2D" parent="Skills" unique_id=2134973124]
 
 [node name="Effects" type="Node" parent="." unique_id=1092484594]
 

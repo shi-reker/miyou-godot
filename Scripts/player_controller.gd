@@ -27,7 +27,7 @@ func _ready() -> void:
 		"Skill 3": skill3.ActivateSkill,
 		"Skill 4": skill4.ActivateSkill
 	}
-	Setup("res://Resources/Classes/Variants/no_class_res.tres", Weapon_base.WeaponTypes.HEAVY)
+	Setup("res://Resources/Classes/Variants/no_class_res.tres", Weapon_base.WeaponTypes.FIREARM)
 
 func Setup(classPath:String, wType:Weapon_base.WeaponTypes = currentWeapon):
 	charClass = load(classPath)
